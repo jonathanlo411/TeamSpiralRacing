@@ -1,18 +1,23 @@
 <script lang="ts">
   import type { PageData } from './$types';
+  import { page } from '$app/stores';
   import drivers from '$lib/drivers.json';
+  import CarProfile from '$lib/client/CarProfile.svelte'
 
+  // Load driver data
   const driverList: Drivers = drivers;
   export let data: PageData;
-
-  const driverData: driverDataType = driverList[data.driver];
+  let driverData: driverDataType = driverList[data.driver];
+  
+  // Update page data if redirecting to other driver
+  $: driverData = driverList[$page.params.slug];
 </script>
 
 <div id='main'>
   <!-- Initial Screen -->
   <section 
     id="page-entrance" 
-    style="background-image: url('/drivers/{driverData.pictureSplash}')"
+    style="background-image: url('/drivers/{$page.params.slug}/splash.jpg')"
   >
     <div id="page-entrance-content">
       <h1>{driverData.driver}</h1>
@@ -36,7 +41,19 @@
   </section>
 
   <section id="description">
+    <h2>Biography</h2>
     {@html driverData.description}
+  </section>
+
+  <section id="cars">
+    <h2>Cars</h2>
+    {#if driverData.cars.length === 0}
+      <p>N/A</p>
+    {:else}
+      {#each driverData.cars as car}
+        <CarProfile linkRef={car} />
+      {/each}
+    {/if}
   </section>
 
 </div>
@@ -112,5 +129,30 @@
   }
 
   /* Driver Description */
+  #description {
+    width: var(--central-width);
+    margin: 5vh auto;
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+  section h2 {
+    font-size: 2.5rem;
+    margin: 2rem 0;
+  }
+  :global(#description a), :global(#description a:visited) {
+    color: var(--highlight);
+  }
+  :global(#description img) {
+    max-width: 70%;
+    max-height: 40vh;
+    margin: 2rem auto 0;
+    border-radius: 10px;
+    display: flex;
+  }
 
+  /* Cars */
+  #cars {
+    width: var(--central-width);
+    margin: 5vh auto;
+  }
 </style>

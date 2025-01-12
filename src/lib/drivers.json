@@ -4,17 +4,17 @@
         "racingNumber": 88,
         "car": "2006 Honda S2000",
         "birthday": "2004.07.24",
-        "pictureRef": "thomas-lo.png",
-        "pictureSplash": "thomas-lo-splash.jpg",
+        "cars": [],
         "description": ""
     },
     "jonathan-lo": {
         "driver": "Jonathan Lo",
         "racingNumber": 411,
         "car": "2007 Honda S2000",
-        "birthday": "2024.04.11",
-        "pictureRef": "jonathan-lo.png",
-        "pictureSplash": "jonathan-lo-splash.jpg",
-        "description": ""
+        "birthday": "2002.04.11",
+        "cars": [
+            "hyperion"
+        ],
+        "description": "Jonathan grew up in San Diego, California, alongside his brother <a  href=\"/team/thomas-lo\">Thomas</a>. Unlike many car enthusiasts, he didn't spend his childhood idolizing supercars or hanging posters of Ferraris and McLarens on his bedroom walls. Instead, his world revolved around competitive swimming.<br><br>From the age of 8 to 20, Jonathan dedicated himself to the sport, spending countless hours training before and after school to become faster, stronger, and more efficient. By 13, he was competing in regional championships in Southern California, eventually reaching the semi-national circuit, known as Futures, by the end of his swimming career.<br><img src=\"/drivers/assets/swim.jpg\" alt=\"swim champs\" /><br>So how did someone with no initial interest in cars find himself immersed in the world of racing?<br><br>At 16, like most teenagers, Jonathan got his driver's license and inherited the family's 2002 Honda CR-V. What began as a purely utilitarian relationship—commuting to school and swim practices—evolved into something deeper. He started noticing the nuances of driving: throttle response, the feeling of G-forces while cornering, and the tactile connection with the car. His curiosity grew after discovering the iconic racing series <i>Initial D</i> and <i>Wangan Midnight</i>.<br><br>Late-night drives on San Diego's backroads became a ritual after swim practices. These winding routes ignited his passion for driving, leading him to research car mechanics, driving techniques like trail braking, and their real-world applications. Recognizing the limits of public roads, he transitioned to sim racing, starting with a G29 wheel, pedals, and <i>Assetto Corsa</i>.<br><img src=\"/drivers/assets/sim.jpg\" alt=\"sim racing\" /><br>At UC San Diego, Jonathan shifted his focus from swimming to his growing passion for racing. Sim racing became a central hobby, where he mastered courses like the Nürburgring Nordschleife and the <a href=\"https://shutokorevivalproject.com/\">Tokyo Metropolitan Expressway (SRP)</a>. His dedication paid off as he began posting top times on time attack leaderboards, piloting a virtual Honda S2000, dubbed “AP2 - Legendary.”<br><br>After graduating college, Jonathan rewarded himself with a 2007 Honda S2000 using savings from his internships. This car became his canvas for applying the fundamentals he had honed in the virtual world. A 10-week business trip to the Netherlands gave him his first taste of real-world track driving at the Nürburgring Nordschleife. On weekends, he also explored legendary circuits like Zandvoort and Spa-Francorchamps.<br><img src=\"/drivers/assets/nords.jpg\" alt=\"driving on the nords\" /><br>Upon returning to California, Jonathan dove into high-performance driving events (HPDE) and track days, with Streets of Willow becoming his home track. Today, he continues to push the limits of both his S2000 and his skills, striving to bring his dream car, “AP2 - Legendary,” to life while sharpening his craft on and off the track."
     }
 }

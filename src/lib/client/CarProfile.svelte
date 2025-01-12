@@ -1,0 +1,159 @@
+<script lang='ts'>
+  export let linkRef: string;
+  import cars from '$lib/cars.json'
+
+  const carsData = cars as Cars;
+  let carData = carsData[linkRef] as carDataType;
+  let tags = carData["history"].map((x) => x.tag)
+
+  // Start with the most recent verion of the car
+  let tagIndex = tags.length - 1;
+  $: currentTag = tags[tagIndex];
+
+  function iteratePreviousVersion(): void {
+      tagIndex = Math.max(0, tagIndex - 1); 
+  }
+
+  function iterateNextVersion(): void {
+      tagIndex = Math.min(tags.length - 1, tagIndex + 1); 
+  }
+</script>
+
+<svelte:head>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=arrow_forward" />
+</svelte:head>
+
+<a class='car-card' href="/cars/{linkRef}">
+  <div class='content'>
+    <h1>{carData.name}<p>{currentTag}</p></h1>
+    <div class="controls">
+      <button class="up-button" 
+              on:click={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                iterateNextVersion();
+              }}
+        disabled={tagIndex === tags.length - 1}>
+        <span class="material-symbols-outlined">arrow_forward</span>
+      </button>
+      <button class="down-button" 
+              on:click={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                iteratePreviousVersion();
+              }}
+              disabled={tagIndex === 0}>
+        <span class="material-symbols-outlined">arrow_forward</span>
+      </button>
+    </div>
+    <img src="/cars/{linkRef}/{currentTag}/outline.png" alt="outline of car" />
+  </div>
+</a>
+
+<style>
+  .car-card, .car-card:visited {
+    background: radial-gradient(
+      circle,
+      rgba(150, 150, 150, 0.1) 0%,
+      rgba(100, 100, 100, 0.3) 40%,
+      rgba(50, 50, 50, 0.6) 70%,
+      rgba(30, 30, 30, 0.9) 100%
+    );
+    background-size: 200% 200%;
+    animation: shimmer 3s infinite;
+    padding: 1.2rem;
+    display: block;
+    border-radius: 30px;
+    transition: 0.3s;
+    text-decoration: none;
+    color: white;
+  }
+  @keyframes shimmer {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  .car-card:hover {
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+    animation: shimmer-hover 1.5s infinite;
+    cursor: pointer;
+  }
+  @keyframes shimmer-hover {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  .car-card .content {
+    background-color: var(--highlight);
+    border-radius: 15px;
+    position: relative;
+    height: 650px;
+  }
+  .content h1 {
+    font-size: 10rem;
+    position: absolute;
+    padding-right: 2rem;
+    display: inline-block;
+    top: 2rem;
+    left: 5rem;
+    display: inline;
+    z-index: 1;
+  }
+  .content h1 p {
+    display: inline;
+    margin-left: 1rem;
+    color: orange;
+  }
+  .content img {
+    width: 90%;
+    margin: auto;
+    padding: 13rem 0 2rem;
+    display: flex;
+    z-index: 2;
+    position: relative;
+  }
+  
+  .controls {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+  }
+  .controls > button {
+    z-index: 10;
+    margin: 0.5rem;
+    height: 2rem;
+    width: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 0;
+    border: none;
+    border-radius: 100px;
+    /* border: 1px solid black; */
+  }
+  .controls > button:hover {
+    cursor: pointer;
+  }
+  button:disabled:hover,
+  button[disabled]:hover {
+      cursor: not-allowed;
+  }
+  .up-button { transform: rotate(-90deg); }
+  .down-button { transform: rotate(90deg); }
+</style>

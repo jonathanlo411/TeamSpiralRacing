@@ -19,8 +19,8 @@
       <a class="nav-item" href="/team">Team</a>
       <a class="nav-item" href="/cars">Cars</a>
       <a class="nav-item" href="/times">Times</a>
-      <a class="nav-item" href="/partners">Partners</a>
-      <a class="nav-item" href="/blog">Blog</a>
+      <!-- <a class="nav-item" href="/partners">Partners</a> -->
+      <!-- <a class="nav-item" href="/blog">Blog</a> -->
     </div>
     <a href="/login" id="login"><button>Login</button></a>
   </nav>
@@ -87,6 +87,9 @@
     --fastest: rgb(174, 62, 201);
     --font-color: white;
     --subdued: rgb(101, 93, 98);
+
+    /* Size vars */
+    --central-width: calc(min(90%, 1500px) - 3.5rem);
   }
 
   /* Nav Bar */
@@ -104,7 +107,7 @@
     border-color: var(--border);
   }
   nav {
-    width: calc(min(90%, 1500px) - 3.5rem);
+    width: var(--central-width);
     height: 56px;
     display: flex;
     justify-content: space-between;

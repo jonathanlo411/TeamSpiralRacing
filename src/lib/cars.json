@@ -1,0 +1,50 @@
+{
+    "hyperion": {
+        "name": "Hyperion",
+        "history": [
+            {
+                "tag": "v1",
+                "description": "",
+                "power": [
+                    "K&N Air Filter",
+                    "Buddy Club Spec II Exhasut"
+                ],
+                "underbody": [
+                    "GodSpeed MonoRS Coiovers (10k/10k)"
+                ],
+                "body": [
+                    "Forbidden USA Mugen Style Hardtop"
+                ],
+                "interior": [],
+                "misc": [
+                    "AP2v2 Wheels",
+                    "215/245 ECS-02"
+                ]
+            },
+            {
+                "tag": "v2",
+                "description": "",
+                "power": [
+                    "K&N Air Filter",
+                    "Buddy Club Spec II Exhasut"
+                ],
+                "underbody": [
+                    "SBG Ohlins DFV (14k/12k)",
+                    "SBG FPSpec Sway Bar (Front)",
+                    "SBG FPSpec Sway Bar (Rear)"
+                ],
+                "body": [
+                    "Forbidden USA Mugen Style Hardtop"
+                ],
+                "interior": [
+                    "Renegade Extended Shift Knob",
+                    "Retivis RA86 GMRS Radio"
+                ],
+                "misc": [
+                    "17x9.5 + 51 Titan 7 T-R10s",
+                    "255 Square RE-71RS"
+                ]
+            }
+        ]
+    }
+}

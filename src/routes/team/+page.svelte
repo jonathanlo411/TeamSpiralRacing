@@ -21,7 +21,7 @@
       <a class='driver-card' href="/team/{driver}">
         <div class='content'>
           <span class='driver-number'>{driverData.racingNumber}</span>
-          <img src='/drivers/{driverData.pictureRef}' alt='driver profile' />
+          <img src='/drivers/{driver}/outline.png' alt='driver profile' />
           <h3 class='driver-name'>{driverData.driver}</h3>
         </div>
       </a>
@@ -69,7 +69,7 @@
 
   /* Drivers */
   #drivers {
-    width: 80%;
+    width: var(--central-width);
     margin: 5rem auto;
   }
   #drivers > h2 {

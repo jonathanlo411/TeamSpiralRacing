@@ -9,23 +9,35 @@ declare global {
 		// interface Platform {}
 	}
 	
-	interface Window {
-		initMap: () => void;
-		google: any;
-	}
 
+  // Drivers
   interface driverDataType {
     driver: string,
     racingNumber: number,
     car: string,
     birthday: string,
-    pictureRef: string,
-    pictureSplash: string,
+    cars: Array<string>,
     description: string
   }
-  
   type Drivers = Record<string, driverDataType>
+
+  // Cars
+  interface carHistoryDataType {
+    tag: string;
+    description: string;
+    power: string[];
+    underbody: string[];
+    body: string[];
+    interior: string[];
+    misc: string[];
+  }
+  interface carDataType {
+    name: string;
+    history: carHistoryDataType[];
+  }
+  type Cars = Record<string, carDataType>;
 	
+  // Google Maps
 	namespace google.maps {
     class Map {
       constructor(element: HTMLElement, options: MapOptions);
@@ -47,6 +59,10 @@ declare global {
       lng: number;
     }
   }
+	interface Window {
+		initMap: () => void;
+		google: any;
+	}
 }
 
 export {};
