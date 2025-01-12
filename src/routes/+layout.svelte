@@ -67,8 +67,8 @@
 </footer>
 
 <style>
-  /* General Styling */
-  @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+  /* General Styling */@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+  @import url('https://fonts.googleapis.com/css?family=Racing+Sans+One&display=swap');
   :global(*) {
     box-sizing: border-box;
     margin: 0;

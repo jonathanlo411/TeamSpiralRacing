@@ -1,0 +1,20 @@
+{
+    "thomas-lo": {
+        "driver": "Thomas Lo",
+        "racingNumber": 88,
+        "car": "2006 Honda S2000",
+        "birthday": "2004.07.24",
+        "pictureRef": "thomas-lo.png",
+        "pictureSplash": "thomas-lo-splash.jpg",
+        "description": ""
+    },
+    "jonathan-lo": {
+        "driver": "Jonathan Lo",
+        "racingNumber": 411,
+        "car": "2007 Honda S2000",
+        "birthday": "2024.04.11",
+        "pictureRef": "jonathan-lo.png",
+        "pictureSplash": "jonathan-lo-splash.jpg",
+        "description": ""
+    }
+}

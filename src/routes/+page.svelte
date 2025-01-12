@@ -40,7 +40,7 @@
 
       // Create and append script
       const script = document.createElement("script");
-      script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyC8nba5SITxXeZoCu2VoMNmEikY7bxzyyU&callback=initMap`;
+      script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyAIWdT1FG8JhrTPIC1bl1rT9jqn76tU_lc&callback=initMap`;
       script.async = true;
       script.defer = true;
       script.onerror = reject;

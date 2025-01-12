@@ -13,6 +13,18 @@ declare global {
 		initMap: () => void;
 		google: any;
 	}
+
+  interface driverDataType {
+    driver: string,
+    racingNumber: number,
+    car: string,
+    birthday: string,
+    pictureRef: string,
+    pictureSplash: string,
+    description: string
+  }
+  
+  type Drivers = Record<string, driverDataType>
 	
 	namespace google.maps {
     class Map {
