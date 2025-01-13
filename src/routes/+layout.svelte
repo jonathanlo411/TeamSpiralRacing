@@ -15,7 +15,7 @@
 <div id="centering" class:scrolled={scrolled}>
   <nav>
     <div id="nav-items">
-      <a class="nav-item" href="/">Home</a>
+      <a id="logo" href="/"><img src="/logos/icon.png" alt="home logo" /></a>
       <a class="nav-item" href="/team">Team</a>
       <a class="nav-item" href="/cars">Cars</a>
       <a class="nav-item" href="/times">Times</a>
@@ -42,7 +42,7 @@
       <div id='chore-row'>
         <a href='/'>Terms of Use</a>
         <a href='/'>Privacy Policy</a>
-        <a href='/'>Source Code</a>
+        <a href='https://github.com/jonathanlo411/team-spiral-racing' target="_blank">Source Code</a>
       </div>
       <span>© Team Spiral Racing and its contributors 2024-2025</span>
     </div>
@@ -116,7 +116,14 @@
   nav #nav-items {
     display: flex;
   }
-
+  #logo {
+    display: flex;
+    align-items: center;
+    padding: 0 1rem;
+  }
+  #logo > img {
+    height: 33px;
+  }
   nav .nav-item, nav .nav-item:visited {
     color: var(--font-color);
     text-decoration: none;

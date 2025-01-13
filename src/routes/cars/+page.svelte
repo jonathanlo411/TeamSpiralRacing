@@ -3,6 +3,10 @@
   import CarProfile from '$lib/client/CarProfile.svelte'
 </script>
 
+<svelte:head>
+  <title>Team Spiral Racing | Cars</title>
+</svelte:head>
+
 <div id="main">
   <!-- Initial Screen -->
   <section 

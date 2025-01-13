@@ -1,4 +1,4 @@
-# Racing Team Spiral Website
+# Team Spiral Racing Website
 A website showcasing Racing Team Spiral.
 
 ## Developing Locally

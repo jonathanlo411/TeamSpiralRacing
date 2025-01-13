@@ -86,6 +86,10 @@
   });
 </script>
 
+<svelte:head>
+  <title>Team Spiral Racing</title>
+</svelte:head>
+
 <div id="main">
   <!-- Initial Screen -->
   <section 
@@ -93,7 +97,7 @@
     style="background-image: url('/home-splash.jpg')"
   >
     <div id="page-entrance-content">
-      <h1>Racing Team Spiral</h1>
+      <img id="logo" src="/logos/full.png" alt="logo of the Team Spiral racing" />
       <h4>
         A team driven by passion for canyon and track, finding the perfect 
         balance between street driving and track racing.
@@ -238,19 +242,20 @@
     position: relative;
     z-index: 2;
     color: white;
-    text-align: center;
     padding: 20px;
-    max-width: 800px;
+    width: var(--central-width);
     margin: 0 auto;
     top: 50%;
-    transform: translateY(-50%);
+    transform: translateY(-55%);
   }
-  #page-entrance-content h1 {
-    font-size: 3rem;
-    margin-bottom: 1rem;
+  #page-entrance-content #logo {
+    height: 13vh;
+    margin: 2rem 0;
   }
   #page-entrance-content h4 {
-    font-size: 1.5rem;
+    font-size: 2rem;
+    font-weight: 300;
+    width: 50%;
     margin-bottom: 2rem;
   }
   #page-entrance-content a {
@@ -260,9 +265,9 @@
     background-color: var(--highlight);
     color: white;
     padding: 1rem 2rem;
-    font-size: 1rem;
+    font-size: 1.3rem;
     border: none;
-    border-radius: 5px;
+    border-radius: 1000px;
     font-weight: 700;
     cursor: pointer;
     transition: 0.3s;

@@ -44,6 +44,10 @@
   } : null;
 </script>
 
+<svelte:head>
+  <title>Team Spiral Racing | Cars - {carData.name}</title>
+</svelte:head>
+
 <div id="main">
   <!-- Initial Screen -->
   <section 

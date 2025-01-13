@@ -2,6 +2,10 @@
   import drivers from '$lib/drivers.json'
 </script>
 
+<svelte:head>
+  <title>Team Spiral Racing | Team</title>
+</svelte:head>
+
 <div id="main">
   <!-- Initial Screen -->
   <section 

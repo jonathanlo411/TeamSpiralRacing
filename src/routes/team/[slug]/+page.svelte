@@ -13,6 +13,10 @@
   $: driverData = driverList[$page.params.slug];
 </script>
 
+<svelte:head>
+  <title>Team Spiral Racing | Team - {driverData.driver}</title>
+</svelte:head>
+
 <div id='main'>
   <!-- Initial Screen -->
   <section 
