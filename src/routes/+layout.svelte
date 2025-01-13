@@ -40,8 +40,8 @@
 
     <div id='lower'>
       <div id='chore-row'>
-        <a href='/'>Terms of Use</a>
-        <a href='/'>Privacy Policy</a>
+        <a href='https://documents.teamspiralracing.com/pdfs/Team%20Spiral%20Racing%20-%20Terms%20of%20Service.pdf' target="_blank">Terms of Use</a>
+        <a href='https://documents.teamspiralracing.com/pdfs/Team%20Spiral%20Racing%20-%20Privacy%20Policy.pdf' target="_blank">Privacy Policy</a>
         <a href='https://github.com/jonathanlo411/team-spiral-racing' target="_blank">Source Code</a>
       </div>
       <span>© Team Spiral Racing and its contributors 2024-2025</span>
