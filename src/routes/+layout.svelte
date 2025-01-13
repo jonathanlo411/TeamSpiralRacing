@@ -53,13 +53,13 @@
       <h3>Socials</h3>
       <div id='split'>
         <div>
-          <a href="/">Discord</a>
-          <a href="/">Facebook</a>
-          <a href="/">Instagram</a>
+          <a href="https://discord.gg/vaEQqNVzBx" target="_blank">Discord</a>
+          <a href="https://www.facebook.com/profile.php?id=61571963818512" target="_blank">Facebook</a>
+          <a href="https://www.instagram.com/teamspiralracing/" target="_blank">Instagram</a>
         </div>
         <div>
-          <a href="/">Twitter</a>
-          <a href="/">YouTube</a>
+          <a href="https://x.com/SpiralRacing" target="_blank">Twitter</a>
+          <a href="https://www.youtube.com/@TeamSpiralRacing" target="_blank">YouTube</a>
         </div>
       </div>
     </div>

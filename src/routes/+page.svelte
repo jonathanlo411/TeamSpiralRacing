@@ -171,7 +171,7 @@
       <div id='lower'>
         <div><img src='/discord-logo.jpg' alt='discord logo' /></div>
         <p>Join us to chat with the other members of the community, get started with contributing, or ask us a question!</p>
-        <a href="/"><button>Join Community!</button></a>        
+        <a href="https://discord.gg/vaEQqNVzBx" target="_blank"><button>Join Community!</button></a>        
       </div>
 
     </div>
