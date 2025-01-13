@@ -24,6 +24,7 @@ declare global {
   // Cars
   interface carHistoryDataType {
     tag: string;
+    updateDate: string;
     description: string;
     power: string[];
     underbody: string[];
@@ -33,6 +34,10 @@ declare global {
   }
   interface carDataType {
     name: string;
+    year: number;
+    make: string;
+    model: string;
+    intro: string;
     history: carHistoryDataType[];
   }
   type Cars = Record<string, carDataType>;

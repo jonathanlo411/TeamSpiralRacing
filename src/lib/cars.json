@@ -1,16 +1,21 @@
 {
     "hyperion": {
         "name": "Hyperion",
+        "year": 2007,
+        "make": "Honda",
+        "model": "S2000",
+        "intro": "The 2007 Honda S2000, affectionately named \"Hyperion\", is a car built for both street and track use. Drawing inspiration from the virtual \"AP2 - Legendary\" S2000 in Assetto Corsa, it strives to reach new heights, much like its namesake tree. As development progresses, \"Hyperion\" is set to evolve into the ideal GT race car, combining performance and precision.<br><br>This car has had two previous owners, neither of whom treated it with the care it deserved. The vehicle was lowered without proper supporting modifications, such as RCAs and a bump steer kit. The cheap suspension components used in the setup also put strain on the underbody, damaging crucial parts like the CV axle, header, and catalytic converter. Additionally, the car was involved in a front-end collision, resulting in the loss of three VINs, leaving only seven intact.<br><br>Despite its past, \"Hyperion\" is on a path of rejuvenation and improvement, continuing to push towards its full potential as a track-ready machine.",
         "history": [
             {
                 "tag": "v1",
-                "description": "",
+                "updateDate": "2024.02.01",
+                "description": "The starting point of the car.",
                 "power": [
                     "K&N Air Filter",
                     "Buddy Club Spec II Exhasut"
                 ],
                 "underbody": [
-                    "GodSpeed MonoRS Coiovers (10k/10k)"
+                    "GodSpeed MonoRS Coilovers (10k/10k)"
                 ],
                 "body": [
                     "Forbidden USA Mugen Style Hardtop"
@@ -22,8 +27,9 @@
                 ]
             },
             {
-                "tag": "v2",
-                "description": "",
+                "tag": "v1.1",
+                "updateDate": "2024.11.02",
+                "description": "Changes to the underbody were made primarily focusing on fitting bigger wheels for more grip while ensuring the car remained compliant under dynamic loads. Some extra goodies like the Renegade Shift Knob and GMRS Radio were installed for convience during street driving. ",
                 "power": [
                     "K&N Air Filter",
                     "Buddy Club Spec II Exhasut"
