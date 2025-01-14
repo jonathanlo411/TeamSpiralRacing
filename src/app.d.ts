@@ -41,7 +41,17 @@ declare global {
     history: carHistoryDataType[];
   }
   type Cars = Record<string, carDataType>;
-	
+
+  // Tracks
+  interface Track {
+    name: string;
+    type: string;
+    location: string;
+    turns: number;
+    description: string;
+  }
+  type Tracks = Record<string, Track>;
+
   // Google Maps
 	namespace google.maps {
     class Map {

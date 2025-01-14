@@ -64,7 +64,7 @@
     font-weight: 900;
   }
 
-  /* Drivers */
+  /* Cars */
   #cars {
     width: var(--central-width);
     margin: 5rem auto;
