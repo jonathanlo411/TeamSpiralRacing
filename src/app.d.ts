@@ -5,7 +5,15 @@ import type { PrismaClient } from "@prisma/client";
 declare global {
 	namespace App {
 		// interface Error {}
-		// interface Locals {}
+		interface Locals {
+      user: {
+        id: string;
+        email: string;
+        firstName: string | null;
+        lastName: string | null;
+        role: "USER" | "DRIVER" | "ADMIN";
+      };
+    }
 		// interface PageData {}
 		// interface PageState {}
 		// interface Platform {}
@@ -13,7 +21,14 @@ declare global {
 
   // DB Connection
 	var prisma: PrismaClient
-	
+  
+  // For some reason `npx prisma generate` doesn't 
+  // create types for Session in schema
+  type Session = {
+    id: string;
+    userId: string;
+    expiresAt: Date;
+  };	
 
   // Drivers
   interface driverDataType {

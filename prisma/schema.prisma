@@ -12,3 +12,26 @@ datasource db {
 generator client {
   provider = "prisma-client-js"
 }
+
+model User {
+  id        String    @id @default(auto()) @map("_id") @db.ObjectId
+  email     String    @unique
+  password  String
+  firstName String
+  lastName  String
+  role      UserRole  @default(USER)
+  sessions  Session[]
+}
+
+model Session {
+  id        String   @id @map("_id")
+  userId    String   @db.ObjectId
+  expiresAt DateTime
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+enum UserRole {
+  USER
+  DRIVER
+  ADMIN
+}
