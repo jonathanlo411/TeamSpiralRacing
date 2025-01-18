@@ -27,7 +27,7 @@
                 ]
             },
             {
-                "tag": "v1.1",
+                "tag": "v2",
                 "updateDate": "2024.11.02",
                 "description": "Changes to the underbody were made primarily focusing on fitting bigger wheels for more grip while ensuring the car remained compliant under dynamic loads. Some extra goodies like the Renegade Shift Knob and GMRS Radio were installed for convience during street driving. ",
                 "power": [
@@ -49,6 +49,48 @@
                 "misc": [
                     "17x9.5 + 51 Titan 7 T-R10s",
                     "255 Square RE-71RS"
+                ]
+            }
+        ]
+    },
+    "ts2k": {
+        "name": "TS2k",
+        "year": 2006,
+        "make": "Honda",
+        "model": "S2000",
+        "intro": "",
+        "history": [
+            {
+                "tag": "v1",
+                "updateDate": "2024.10.19",
+                "description": "The starting point of the car.",
+                "power": [
+                    "K&N Intake"
+                ],
+                "underbody": [],
+                "body": [],
+                "interior": [],
+                "misc": [
+                    "AP2v1 Wheels",
+                    "215/245 All seasons"
+                ]
+            },
+            {
+                "tag": "v1.1",
+                "updateDate": "2024.12.01",
+                "description": "Refreshing the system to bring to a stable baseline.",
+                "power": [
+                    "K&N Intake"
+                ],
+                "underbody": [],
+                "body": [],
+                "interior": [
+                    "Renegade Extended Shift Knob",
+                    "Retivis RA86 GMRS Radio"
+                ],
+                "misc": [
+                    "AP2v2 Wheels",
+                    "215/245 A052s"
                 ]
             }
         ]
