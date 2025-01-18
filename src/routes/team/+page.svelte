@@ -178,4 +178,38 @@
     left: 0.5em;
   }
 
+  /* Mobile Styling */
+  @media screen and (max-width: 1080px) {
+    :global(body) {
+      --driver-card-height: 400px !important;
+      --driver-card-width: 70vw !important;
+    }
+    
+    #page-entrance #page-entrance-content {
+      bottom: 8vh;
+    }
+    #page-entrance-content h1 {
+      font-size: 7rem;
+    }
+
+    /* Drivers */
+    #drivers {
+      width: 95%;
+    }
+    #driver-grid {
+      grid-template-columns: 1fr;
+    }
+    .driver-card {
+      padding: 1rem;
+    }
+    
+    .content span {
+      left: 7.5%;
+      font-size: 4.5rem;
+    }
+    .content .driver-name {
+      font-size: 2.5rem;
+    }
+    
+  }
 </style>

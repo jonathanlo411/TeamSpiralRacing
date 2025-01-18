@@ -145,7 +145,6 @@
     padding: 0;
     border: none;
     border-radius: 100px;
-    /* border: 1px solid black; */
   }
   .controls > button:hover {
     cursor: pointer;
@@ -156,4 +155,31 @@
   }
   .up-button { transform: rotate(-90deg); }
   .down-button { transform: rotate(90deg); }
+  
+  /* Mobile Styling */
+  @media screen and (max-width: 1080px) {
+    .car-card, .car-card:visited {
+      padding: 1rem;
+    }
+  }
+
+  .car-card .content {
+    height: 300px;
+  }
+  .content h1 {
+    font-size: 3rem;
+    top: 5rem;
+    left: 1.25rem;
+    display: block;
+  }
+  .content h1 p {
+    display: block;
+    margin-left: 0rem;
+  }
+  
+  .controls {
+    flex-direction: row;
+  }
+  .up-button { transform: rotate(180deg); }
+  .down-button { transform: rotate(0deg); }
 </style>

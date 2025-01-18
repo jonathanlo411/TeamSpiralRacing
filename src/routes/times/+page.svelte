@@ -91,6 +91,14 @@
     margin: 3vh auto;
   }
 
-
+  /* Mobile Styling */
+  @media screen and (max-width: 1080px) {
+    #page-entrance #page-entrance-content {
+      bottom: 8vh;
+    }
+    #page-entrance-content h1 {
+      font-size: 7rem;
+    }
+  }
 
 </style>

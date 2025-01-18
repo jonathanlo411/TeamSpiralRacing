@@ -30,10 +30,6 @@
 </div>
 
 <style>
-  :global(body) {
-    --driver-card-height: 637px;
-    --driver-card-width: 392px;
-  }
 
   #page-entrance {
     background-position: center;
@@ -72,6 +68,16 @@
   #cars > h2 {
     font-size: 3.5rem;
     margin: 3vh auto;
+  }
+
+  /* Mobile Styling */
+  @media screen and (max-width: 1080px) {
+    #page-entrance #page-entrance-content {
+      bottom: 8vh;
+    }
+    #page-entrance-content h1 {
+      font-size: 7rem;
+    }
   }
 
 </style>

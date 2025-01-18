@@ -478,13 +478,99 @@
     font-size: 2rem;
   }
   .date {
-      font-size: 0.9rem;
-      opacity: 0.8;
+    font-size: 0.9rem;
+    opacity: 0.8;
     }
   .description {
-  flex-grow: 1;
-  font-size: 1.2rem;
-  font-weight: 200;
+    flex-grow: 1;
+    font-size: 1.2rem;
+    font-weight: 200;
+  }
+
+    
+  /* Mobile Styling */
+  @media screen and (max-width: 1080px) {
+    #page-entrance #page-entrance-content {
+      flex-direction: column-reverse;
+      width: 100%;
+      bottom: 0;
+      left: 0;
+    }
+    #page-entrance #page-entrance-content {
+      bottom: 13vh;
+    }
+    #page-entrance-content h1 {
+      margin-top: 2rem;
+      font-size: 4rem;
+      width: 85%;
+      padding-right: 5%;
+    }
+    #info-sec {
+      width: 85%;
+    }
+    #info-sec span {
+      padding: 1rem 0;
+    }
+    #info-sec span h5 {
+      font-size: 1.5rem;
+    }
+    #info-sec span h6 {
+      font-size: 1.3rem;
+    }
+
+    /* Driver Description */
+    #description {
+      font-size: 1.1rem;
+      line-height: 1.5rem;
+    }
+    section h2 {
+      font-size: 2rem;
+    }
+    :global(#description img) {
+      max-width: 95% !important;
+      max-height: 50vh !important;
+    }
+
+    /* Modifications */
+    #mods {
+      font-size: 1.1rem;
+      line-height: 1.5rem;
+    }
+    #mods-list {
+      grid-template-columns: 1fr;
+    }
+
+    /* Comparison */
+    #comparison {
+      flex-direction: column;
+      width: 100%;
+      margin: 5vh auto;
+    }
+    #comparison h3 {
+      font-size: 1.5rem;
+      text-align: center;
+      margin-right: 0;
+    }
+    #comparison select {
+      width: 100%;
+      text-align: center;
+    }
+    #comparison h6 {
+      font-size: 1.1rem;
+      transform: rotate(90deg);
+    }
+
+    /* Timeline */
+    .timeline-entry {
+      flex-direction: column;
+      align-items: start;
+      padding: 1.5rem;
+    }
+    .description {
+      font-size: 1rem;
+      line-height: 1.5rem;
+    }
+
   }
 
 </style>
