@@ -142,6 +142,17 @@
     width: var(--driver-card-width);
     border-radius: 15px;
   }
+  .driver-card > .content::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;    
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0));
+    z-index: 3;
+    border-radius: 15px;
+  }
   .content span {
     position: absolute;
     left: 5%;
@@ -159,7 +170,7 @@
     z-index: 2;
   }
   .content .driver-name {
-    z-index: 3;
+    z-index: 4;
     position: absolute;
     font-size: 3rem;
     font-weight: 900;

@@ -3,7 +3,11 @@
   import type { PageData } from './$types';
   let scrolled = false;
   let menuOpen = false;
+  let mobileMenuOpen = false;
   let menuRef: HTMLDivElement;
+  let mobileMenuRef: HTMLDivElement;
+  let hamburgerRef: HTMLButtonElement;
+  let isMobile = false;
   
   export let data: PageData;
   const user = data.user;
@@ -13,24 +17,59 @@
   };
 
   function handleClickOutside(event: MouseEvent) {
-    if (menuRef && !menuRef.contains(event.target as Node)) {
+    const target = event.target as Node;
+    
+    // Desktop menu handling
+    if (menuRef && !menuRef.contains(target)) {
       menuOpen = false;
     }
+    
+    // Mobile menu handling
+    if (isMobile && mobileMenuOpen) {
+      const clickedHamburger = hamburgerRef?.contains(target);
+      const clickedMenu = mobileMenuRef?.contains(target);
+      
+      if (!clickedHamburger && !clickedMenu) {
+        mobileMenuOpen = false;
+      }
+    }
+  }
+
+  function toggleMobileMenu() {
+    mobileMenuOpen = !mobileMenuOpen;
+  }
+
+  function checkMobile() {
+    isMobile = window.innerWidth <= 1080;
+    if (!isMobile) mobileMenuOpen = false;
   }
 
   async function handleSignOut() {
     await fetch('/api/auth/signout', {
-        method: 'POST',
-        credentials: 'include'
+      method: 'POST',
+      credentials: 'include'
     });
+    function delete_cookie(name: string) {
+      document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+    }
+    delete_cookie("session")
     window.location.reload();
+  }
+
+  function handleNavClick() {
+    if (isMobile) {
+      mobileMenuOpen = false;
+    }
   }
 
   onMount(() => {
     window.addEventListener('scroll', handleScroll);
+    window.addEventListener('resize', checkMobile);
     document.addEventListener('click', handleClickOutside);
+    checkMobile();
     return () => {
       window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', checkMobile);
       document.removeEventListener('click', handleClickOutside);
     };
   });
@@ -39,29 +78,68 @@
 <div id="centering" class:scrolled={scrolled}>
   <nav>
     <div id="nav-items">
-      <a id="logo" href="/"><img src="/logos/icon.png" alt="home logo" /></a>
-      <a class="nav-item" href="/team">Team</a>
-      <a class="nav-item" href="/cars">Cars</a>
-      <a class="nav-item" href="/times">Times</a>
+      {#if !isMobile}
+        <a id="logo" href="/"><img src="/logos/icon.png" alt="home logo" /></a>
+        <a class="nav-item" href="/team">Team</a>
+        <a class="nav-item" href="/cars">Cars</a>
+        <a class="nav-item" href="/times">Times</a>
+      {:else}
+        <a id="logo" href="/"><img src="/logos/short-white.png" alt="home logo" /></a>
+      {/if}
     </div>
-    {#if user}
-      <div id="login">
-        <div class="menu-container" bind:this={menuRef}>
-          <button class="menu-button" on:click={() => menuOpen = !menuOpen}>Menu</button>
-          {#if menuOpen}
-            <div class="popup-menu">
-              <a href="/console/profile" class="menu-item">Profile</a>
-              <a href="/console" class="menu-item">Console</a>
-              <button class="menu-item signout" on:click={handleSignOut}>Sign Out</button>
-            </div>
+
+    {#if isMobile}
+      <button 
+        bind:this={hamburgerRef}
+        class="hamburger-menu" 
+        class:active={mobileMenuOpen}
+        on:click={toggleMobileMenu}
+        aria-label="Toggle mobile menu"
+      >
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+      
+      <div 
+        bind:this={mobileMenuRef}
+        class="mobile-menu" 
+        class:open={mobileMenuOpen}
+      >
+        <div class="mobile-menu-items">
+          <a href="/team" class="mobile-nav-item" on:click={handleNavClick}>Team</a>
+          <a href="/cars" class="mobile-nav-item" on:click={handleNavClick}>Cars</a>
+          <a href="/times" class="mobile-nav-item" on:click={handleNavClick}>Times</a>
+          {#if user}
+            <a href="/console/profile" class="mobile-nav-item" on:click={handleNavClick}>Profile</a>
+            <a href="/console" class="mobile-nav-item" on:click={handleNavClick}>Console</a>
+            <button class="mobile-nav-item signout" on:click={handleSignOut}>Sign Out</button>
+          {:else}
+            <a href="/login" class="mobile-nav-item" on:click={handleNavClick}>Login</a>
           {/if}
         </div>
       </div>
     {:else}
-      <a href="/login" id="login"><button>Login</button></a>
+      {#if user}
+        <div id="login">
+          <div class="menu-container" bind:this={menuRef}>
+            <button class="menu-button" on:click={() => menuOpen = !menuOpen}>Menu</button>
+            {#if menuOpen}
+              <div class="popup-menu">
+                <a href="/console/profile" class="menu-item" on:click={handleNavClick}>Profile</a>
+                <a href="/console" class="menu-item" on:click={handleNavClick}>Console</a>
+                <button class="menu-item signout" on:click={handleSignOut}>Sign Out</button>
+              </div>
+            {/if}
+          </div>
+        </div>
+      {:else}
+        <a href="/login" id="login"><button>Login</button></a>
+      {/if}
     {/if}
   </nav>
 </div>
+
 
 <div id="base">
   <slot></slot>
@@ -334,7 +412,125 @@
 
   /* Mobile Styling */
   @media screen and (max-width: 1080px) {
+    :global(body) {
+      --central-width: calc(min(90%, 1500px) - 3.5rem);
+    }
+
+    /* Nav */
     nav {
+      align-items: center;
+      width: 90%;
+    }
+    .hamburger-menu {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      width: 2rem;
+      height: 2rem;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      z-index: 110;
+    }
+    .hamburger-menu .bar {
+      width: 2rem;
+      height: 0.25rem;
+      background: var(--font-color);
+      border-radius: 10px;
+      transition: all 0.3s linear;
+      position: relative;
+      transform-origin: 1px;
+    }
+    .hamburger-menu.active .bar:first-child {
+      transform: rotate(45deg);
+    }
+    .hamburger-menu.active .bar:nth-child(2) {
+      opacity: 0;
+    }
+    .hamburger-menu.active .bar:last-child {
+      transform: rotate(-45deg);
+    }
+    #logo {
+      padding: 0;
+    }
+
+    .mobile-menu {
+      position: fixed;
+      top: -100%;
+      right: 0;
+      width: 100%;
+      background-color: var(--secondary);
+      border-bottom: 1px solid var(--border);
+      transition: top 0.3s ease-in-out;
+      z-index: 100;
+    }
+    .mobile-menu.open {
+      top: 56px;
+    }
+    .mobile-menu-items {
+      display: flex;
+      flex-direction: column;
+      padding: 1rem;
+    }
+    .mobile-nav-item {
+      color: var(--font-color);
+      text-decoration: none;
+      padding: 1rem;
+      font-size: 1.1rem;
+      border-bottom: 1px solid var(--border);
+      transition: background-color 0.2s;
+    }
+
+    .mobile-nav-item:last-child {
+      border-bottom: none;
+    }
+
+    .mobile-nav-item:hover {
+      background-color: var(--primary);
+    }
+
+    .mobile-nav-item.signout {
+      background: none;
+      border: none;
+      width: 100%;
+      text-align: left;
+      font-size: 1.1rem;
+      cursor: pointer;
+      color: var(--font-color);
+    }
+
+    /* Footer */
+    footer {
+      flex-direction: column;
+      height: fit-content;
+      padding: 2rem;
+    }
+    #left #upper h2 {
+      font-size: 2.5rem;
+      margin: 0.3rem 0;
+    }
+    #left #upper a {
+      font-size: 1.1rem;
+      margin: 0.3rem 0;
+    }
+    #left #lower #chore-row {
+      margin: 2rem 0;
+      display: flex;
+    }
+    #left #lower #chore-row * {
+      font-size: 0.8rem;
+      width: 100%;
+      margin: 0;
+      text-align: center;
+    }
+    #left #lower span {
+      margin: 1rem 0;
+      text-align: center;
+      display: flex;
+      justify-content: space-evenly;
+    }
+    footer #right {
       display: none;
     }
   }
