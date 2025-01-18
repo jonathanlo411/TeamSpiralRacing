@@ -53,12 +53,12 @@
             }
         ]
     },
-    "ts2k": {
-        "name": "TS2k",
+    "rh": {
+        "name": "RH",
         "year": 2006,
         "make": "Honda",
         "model": "S2000",
-        "intro": "",
+        "intro": "The 2006 Honda S2000, now named RH, is a sleek embodiment of performance and style. Finished in Berlina Black, this roadster exudes timeless elegance and delivers an unmatched driving experience. Its journey with me began in Missouri, where it joined my life in excellent condition, aside from a worn clutch. Even with that minor flaw, RH carried me across the country to Southern California without missing a beat. A highlight of the trip was its stop at the Grand Canyon, where its black silhouette stood out against the breathtaking landscape. Now thriving in California, RH lives for the open road. Whether cruising with the top down or unleashing its legendary high-revving engine, this S2000 is a celebration of precision, freedom, and pure driving joy.",
         "history": [
             {
                 "tag": "v1",
@@ -77,10 +77,12 @@
             },
             {
                 "tag": "v1.1",
-                "updateDate": "2024.12.01",
+                "updateDate": "2024.12.2",
                 "description": "Refreshing the system to bring to a stable baseline.",
                 "power": [
-                    "K&N Intake"
+                    "K&N Intake",
+                    "Clutch Masters Lightweight Steel Flywheel 13lbs",
+                    "Exedy OEM Clutch Kit and Pressure Plate"
                 ],
                 "underbody": [],
                 "body": [],
@@ -90,7 +92,7 @@
                 ],
                 "misc": [
                     "AP2v2 Wheels",
-                    "215/245 A052s"
+                    "215/245 RT660"
                 ]
             }
         ]
