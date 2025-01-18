@@ -1,14 +1,38 @@
-<script>
+<script lang="ts">
   import { onMount } from "svelte";
+  import type { PageData } from './$types';
   let scrolled = false;
+  let menuOpen = false;
+  let menuRef: HTMLDivElement;
+  
+  export let data: PageData;
+  const user = data.user;
 
   const handleScroll = () => {
     scrolled = window.scrollY > 0;
   };
 
+  function handleClickOutside(event: MouseEvent) {
+    if (menuRef && !menuRef.contains(event.target as Node)) {
+      menuOpen = false;
+    }
+  }
+
+  async function handleSignOut() {
+    await fetch('/api/auth/signout', {
+        method: 'POST',
+        credentials: 'include'
+    });
+    window.location.reload();
+  }
+
   onMount(() => {
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    document.addEventListener('click', handleClickOutside);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      document.removeEventListener('click', handleClickOutside);
+    };
   });
 </script>
 
@@ -19,10 +43,23 @@
       <a class="nav-item" href="/team">Team</a>
       <a class="nav-item" href="/cars">Cars</a>
       <a class="nav-item" href="/times">Times</a>
-      <!-- <a class="nav-item" href="/partners">Partners</a> -->
-      <!-- <a class="nav-item" href="/blog">Blog</a> -->
     </div>
-    <a href="/login" id="login"><button>Login</button></a>
+    {#if user}
+      <div id="login">
+        <div class="menu-container" bind:this={menuRef}>
+          <button class="menu-button" on:click={() => menuOpen = !menuOpen}>Menu</button>
+          {#if menuOpen}
+            <div class="popup-menu">
+              <a href="/console/profile" class="menu-item">Profile</a>
+              <a href="/console" class="menu-item">Console</a>
+              <button class="menu-item signout" on:click={handleSignOut}>Sign Out</button>
+            </div>
+          {/if}
+        </div>
+      </div>
+    {:else}
+      <a href="/login" id="login"><button>Login</button></a>
+    {/if}
   </nav>
 </div>
 
@@ -67,7 +104,8 @@
 </footer>
 
 <style>
-  /* General Styling */@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+  /* General Styling */
+  @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
   @import url('https://fonts.googleapis.com/css?family=Racing+Sans+One&display=swap');
   :global(*) {
     box-sizing: border-box;
@@ -230,6 +268,69 @@
   }
   #right #split > div a:hover { color: white; }
 
+  /* Popup Menu */
+  .menu-container {
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  .menu-button {
+    background-color: var(--highlight);
+    color: white;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: opacity 0.2s;
+  }
+
+  .menu-button:hover {
+    opacity: 0.8;
+  }
+
+  .popup-menu {
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    right: 0;
+    background-color: var(--secondary);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    min-width: 160px;
+    z-index: 1000;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+  }
+
+  .menu-item {
+    display: block;
+    padding: 0.75rem 1rem;
+    color: var(--font-color);
+    text-decoration: none;
+    transition: background-color 0.2s;
+    font-size: 1rem;
+    width: 100%;
+  }
+
+  .menu-item:hover {
+    background-color: var(--primary);
+  }
+
+  .signout {
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    border-radius: 0;
+    color: var(--font-color);
+    font-weight: normal;
+    cursor: pointer;
+    padding: 0.75rem 1rem;
+  }
 
   /* Mobile Styling */
   @media screen and (max-width: 1080px) {

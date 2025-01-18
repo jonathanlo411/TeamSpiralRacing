@@ -12,7 +12,8 @@
     });
 
     if (res.ok) {
-      goto("/");
+      window.location.reload()
+      goto("/console");
     } else {
       const data = await res.json();
       error = data.message;
