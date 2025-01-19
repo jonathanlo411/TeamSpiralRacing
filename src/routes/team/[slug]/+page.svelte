@@ -209,6 +209,8 @@
       max-width: 95% !important;
       max-height: 50vh !important;
     }
-
+    :global(.p-img) {
+      flex-direction: column;
+    }
   }
 </style>
