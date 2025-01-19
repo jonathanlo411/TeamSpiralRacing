@@ -153,6 +153,13 @@
     border-radius: 10px;
     display: flex;
   }
+  :global(.p-img) {
+    display: flex;
+    justify-content: space-evenly;
+  }
+  :global(.p-img img) {
+    margin: 2rem 0rem 0 !important;
+  }
 
   /* Cars */
   #cars {

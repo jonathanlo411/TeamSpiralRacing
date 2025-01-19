@@ -63,6 +63,7 @@
     animation: shimmer 3s infinite;
     padding: 1.2rem;
     display: block;
+    margin: 4rem 0;
     border-radius: 30px;
     transition: 0.3s;
     text-decoration: none;
