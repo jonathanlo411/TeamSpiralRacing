@@ -21,6 +21,7 @@ model User {
   lastName  String
   role      UserRole  @default(USER)
   sessions  Session[]
+  trackTimes TrackTime[]
 }
 
 model Session {
@@ -43,4 +44,15 @@ model BlogPost {
   authorId  String   @db.ObjectId
   status    String   @default("draft")
   createdAt DateTime @default(now())
+}
+
+model TrackTime {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  track     String
+  date      DateTime
+  car       String
+  time      Float
+  proof     String
+  userId    String   @db.ObjectId
+  user      User     @relation(fields: [userId], references: [id])
 }
