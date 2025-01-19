@@ -1,10 +1,25 @@
 <script lang="ts">
   import tracks from '$lib/tracks.json';
+  import cars from '$lib/cars.json';
+  import type { PageData } from './$types';
 
-  const trackList = tracks;
+  export let data: PageData;
+  const trackList = tracks as Tracks;
+  const carList = cars as Cars;
+
+  let userCars: Record<string, carDataType> = {};
+  for (let i = 0; i < data.user.cars.length; i++) {
+    const carRef = data.user.cars[i];
+    userCars[carRef] = carList[carRef];
+  }
+
   let selectedTrack = '';
+  let configuration = '';
+  let configurations: string[] = [];
   let date = '';
   let car = '';
+  let tag = '';
+  let tags: string[] = [];
   let timeMinutes = '';
   let timeSeconds = '';
   let timeMilliseconds = '';
@@ -12,9 +27,11 @@
   let validationMessage = '';
   let isSubmitting = false;
 
+  $: configurations = selectedTrack ? trackList[selectedTrack]?.configuration || [] : [];
+  $: tags = car ? userCars[car]?.history.map((entry) => entry.tag) || [] : [];
+
   const handleSubmit = async () => {
     validationMessage = '';
-    
     if (!/^(https:\/\/)?(www\.)?youtube\.com\/watch\?v=/.test(proof)) {
       validationMessage = 'Proof must be a valid YouTube link.';
       return;
@@ -33,24 +50,27 @@
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           track: selectedTrack,
+          configuration,
           date,
           car,
+          tag,
           time: totalSeconds,
-          proof
-        })
+          proof,
+        }),
       });
 
       if (!response.ok) throw new Error('Failed to submit time');
 
-      // Reset form
       selectedTrack = '';
+      configuration = '';
       date = '';
       car = '';
+      tag = '';
       timeMinutes = '';
       timeSeconds = '';
       timeMilliseconds = '';
       proof = '';
-      
+
       alert('Time submitted successfully!');
     } catch (error) {
       validationMessage = 'Failed to submit time. Please try again.';
@@ -60,17 +80,23 @@
   };
 </script>
 
+<svelte:head>
+  <title>Team Spiral Racing | Paddock - Timing</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=report" />
+</svelte:head>
+
 <div class="main">
   <section class="description">
     <h2>Description</h2>
     <p>
-      We track lap times across different tracks and car configurations. Make sure to include video proof of your run for verification. Ensure that your video proof starts and stops at the expected points as designated under the track profile if it is a Road Course.
+      We track lap times across different tracks and car configurations. Make sure to include video proof of your run for verification. Ensure that your video proof starts and stops at the expected start and stop points as designated under the track profile if it is a Road Course.
     </p>
   </section>
 
   <section class="submission">
     <h2>Submit Time</h2>
     <p>Enter your race details below. All fields are required for submission.</p>
+    {#if data.user.role === "DRIVER"}
     
     <form on:submit|preventDefault={handleSubmit}>
       <div class="form-group">
@@ -84,13 +110,38 @@
       </div>
 
       <div class="form-group">
+        <label for="configuration">Configuration</label>
+        <select id="configuration" bind:value={configuration} required>
+          <option value="">Select a configuration</option>
+          {#each configurations as config}
+            <option value={config}>{config}</option>
+          {/each}
+        </select>
+      </div>
+
+      <div class="form-group">
         <label for="date">Race Date</label>
         <input type="date" id="date" bind:value={date} required />
       </div>
 
       <div class="form-group">
         <label for="car">Car</label>
-        <input type="text" id="car" bind:value={car} placeholder="Enter your car" required />
+        <select id="car" bind:value={car} required>
+          <option value="">Select from your cars</option>
+          {#each Object.entries(userCars) as [ref, carData]}
+            <option value={ref}>{carData.name} ({carData.year} {carData.make} {carData.model})</option>
+          {/each}
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="tag">Tag</label>
+        <select id="tag" bind:value={tag} required>
+          <option value="">Select a tag</option>
+          {#each tags as carTag}
+            <option value={carTag}>{carTag}</option>
+          {/each}
+        </select>
       </div>
 
       <div class="form-group time-group">
@@ -149,6 +200,17 @@
       </button>
       
     </form>
+
+    {:else}
+
+      <div id="not-allowed">
+        <div>
+          <span class="material-symbols-outlined">report</span>
+          <h4>Only authenticated users with the role of DRIVER can post times!</h4>
+        </div>
+      </div>
+
+    {/if}
   </section>
 </div>
 
@@ -250,6 +312,29 @@
     margin-bottom: 1rem;
   }
   
+  #not-allowed {
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    justify-content: space-around;
+    padding: 1.5rem;
+    background-color: rgba(255, 137, 131, 0.15);
+    border: 1px solid red;
+    border-radius: 10px;
+    margin: 3rem 0 1.5rem;
+    color: red;
+    width: 100%;
+    --font-size: 1.25rem;
+    font-size: var(--font-size);
+  }
+  #not-allowed > div {
+    display: flex;
+    align-items: center;
+  }
+  #not-allowed span {
+    font-size: calc(var(--font-size) * 1.5);
+    padding-right: 0.5rem;
+  }
 
   @media screen and (max-width: 768px) {
     section {

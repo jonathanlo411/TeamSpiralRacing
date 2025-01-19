@@ -20,7 +20,7 @@
     });
 
     if (res.ok) {
-      goto("/console");
+      goto("/login");
     } else {
       const data = await res.json();
       error = data.message;

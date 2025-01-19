@@ -19,6 +19,7 @@ model User {
   password  String
   firstName String
   lastName  String
+  cars      String[]
   role      UserRole  @default(USER)
   sessions  Session[]
   trackTimes TrackTime[]
@@ -47,12 +48,14 @@ model BlogPost {
 }
 
 model TrackTime {
-  id        String   @id @default(auto()) @map("_id") @db.ObjectId
-  track     String
-  date      DateTime
-  car       String
-  time      Float
-  proof     String
-  userId    String   @db.ObjectId
-  user      User     @relation(fields: [userId], references: [id])
+  id            String   @id @default(auto()) @map("_id") @db.ObjectId
+  track         String
+  configuration String
+  date          DateTime
+  car           String
+  tag           String
+  time          Float
+  proof         String
+  userId        String   @db.ObjectId
+  user          User     @relation(fields: [userId], references: [id])
 }

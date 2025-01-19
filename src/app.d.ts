@@ -11,6 +11,7 @@ declare global {
         email: string;
         firstName: string | null;
         lastName: string | null;
+        cars: string[];
         role: "USER" | "DRIVER" | "ADMIN";
       };
     }
@@ -69,6 +70,7 @@ declare global {
     location: string;
     turns: number;
     description: string;
+    configuration: string[];
   }
   type Tracks = Record<string, Track>;
 

@@ -1,23 +1,18 @@
 {
-    "streets-of-willow-cw": {
-        "name": "Streets of Willow CW",
+    "streets-of-willow": {
+        "name": "Streets of Willow",
         "type": "Race Track",
         "description": "The Streets of Willow is a great short track, and local favorite. This track provides a good start for novices, yet gives advance drivers a challenge as well. This is a 1.8 mile road course with 14 turns and three elevation changes, and plenty of run-off space for a safe track going experience.",
         "turns": 14,
-        "location": "34.875°, -118.262°"
-    },
-    "streets-of-willow-ccw": {
-        "name": "Streets of Willow CCW",
-        "type": "Race Track",
-        "description": "The Streets of Willow is a great short track, and local favorite. This track provides a good start for novices, yet gives advance drivers a challenge as well. This is a 1.8 mile road course with 14 turns and three elevation changes, and plenty of run-off space for a safe track going experience.",
-        "turns": 14,
-        "location": "34.875°, -118.262°"
+        "location": "34.875°, -118.262°",
+        "configuration": ["CW", "CCW"]
     },
     "palomar-mt-sth": {
         "name": "Palomar Mountain South Grade",
         "type": "Road Course",
         "description": "The Palomar Mountain South Grade is a winding, steep, and scenic road with numerous sharp switchbacks that provides access to the summit of Palomar Mountain. It is more technical compared to its <a href=\"/times/palomar-mt-est\">East Grade</a> brother and accidents may occur if the driver is inattentive.",
         "turns": 63,
-        "location": "33.294°, -116.898°"
+        "location": "33.294°, -116.898°",
+        "configuration": ["Downhill", "Uphill"]
     }
 }

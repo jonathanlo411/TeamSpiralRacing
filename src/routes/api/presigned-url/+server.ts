@@ -14,7 +14,7 @@ const r2Client = new S3Client({
 });
 
 export async function POST({ request, locals }: { request: Request; locals: App.Locals }) {
-  if (!locals.user) {
+  if (!locals.user || locals.user.role === "USER" ) {
     return json({ error: 'Unauthorized' }, { status: 401 });
   }
 
