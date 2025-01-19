@@ -1,0 +1,123 @@
+<script lang="ts">
+  import type { PageData } from './$types';
+  export let data: PageData;
+</script>
+
+<div id="main">
+  <!-- Initial Screen -->
+  <section 
+    id="page-entrance" 
+    style="background-image: url('/paddock-splash.jpg')"
+  >
+    <div id="page-entrance-content">
+      <h1>Welcome to the Paddock, {data.user.firstName}!</h1>
+    </div>
+  </section>
+
+  <section id="navigate" class="paddock-sec">
+    <h2>Navigate</h2>
+    <div id="nav-grid">
+      <a href="/paddock/events" class="nav-item" style="background-image: url('/paddock-nav-1.jpg')"><h4>Events</h4></a>
+      <a href="/paddock/blog" class="nav-item" style="background-image: url('/paddock-nav-2.jpg')"><h4>Blog</h4></a>
+      <a href="/paddock/timing" class="nav-item" style="background-image: url('/paddock-nav-3.jpg')"><h4>Timing</h4></a>
+      <a href="/paddock/gallery" class="nav-item" style="background-image: url('/paddock-nav-4.jpg')"><h4>Gallery</h4></a>
+    </div>
+  </section>
+
+  <section id="events" class="paddock-sec">
+    <h2>Events</h2>
+    <div id="events-grid">
+
+      <div class="event-item">
+
+      </div>
+
+    </div>
+  </section>
+
+</div>
+
+<style>
+  /* Main Entrance */
+  #page-entrance {
+    background-position: center;
+    background-size: cover;
+    height: 80vh;
+    width: 100vw;
+    position: relative;
+  }
+  #page-entrance::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1;
+  }
+  #page-entrance #page-entrance-content {
+    position: absolute;
+    z-index: 2;
+    color: white;
+    bottom: 12vh;
+    left: 12vw;
+  }
+  #page-entrance-content h1 {
+    font-size: 8rem;
+    width: 70%;
+    margin-bottom: 2rem;
+  }
+
+  /* Content Styling */
+  .paddock-sec {
+    width: var(--central-width);
+    margin: 5rem auto;
+  }
+  .paddock-sec h2 {
+    font-size: 3.75rem;
+    margin-bottom: 2.5rem;
+  }
+
+  /* Navigate */
+  #nav-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(2, 30vh);
+    grid-gap: 3em;
+  }
+  .nav-item, .nav-item:visited {
+    width: 100%;
+    border-radius: 15px;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    color: white;
+    text-decoration: none;
+    transition: 0.3s;
+  }
+  .nav-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.2));
+    z-index: 1;
+    border-radius: 15px;
+  }
+  .nav-item:hover {
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+    animation: shimmer-hover 1.5s infinite;
+    cursor: pointer;
+  }
+  .nav-item h4 {
+    position: absolute;
+    z-index: 2;
+    font-size: 3rem;
+    bottom: 1em;
+    left: 1em;
+  }
+</style>

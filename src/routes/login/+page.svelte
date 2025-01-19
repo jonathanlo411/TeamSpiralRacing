@@ -13,7 +13,7 @@
 
     if (res.ok) {
       window.location.reload()
-      goto("/console");
+      goto("/paddock");
     } else {
       const data = await res.json();
       error = data.message;

@@ -98,6 +98,16 @@ declare global {
 		initMap: () => void;
 		google: any;
 	}
+
+  // Blog posts
+  export interface BlogPost {
+    id: string;
+    title: string;
+    content: string;
+    authorId: string;
+    createdAt: Date;
+    status: 'draft' | 'published';
+  }
 }
 
 export {};

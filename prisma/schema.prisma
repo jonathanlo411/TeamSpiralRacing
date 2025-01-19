@@ -35,3 +35,12 @@ enum UserRole {
   DRIVER
   ADMIN
 }
+
+model BlogPost {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  title     String
+  content   String
+  authorId  String   @db.ObjectId
+  status    String   @default("draft")
+  createdAt DateTime @default(now())
+}

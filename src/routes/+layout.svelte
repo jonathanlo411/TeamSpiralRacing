@@ -111,8 +111,11 @@
           <a href="/cars" class="mobile-nav-item" on:click={handleNavClick}>Cars</a>
           <a href="/times" class="mobile-nav-item" on:click={handleNavClick}>Times</a>
           {#if user}
-            <a href="/console/profile" class="mobile-nav-item" on:click={handleNavClick}>Profile</a>
-            <a href="/console" class="mobile-nav-item" on:click={handleNavClick}>Console</a>
+            <a href="/paddock" class="mobile-nav-item" on:click={handleNavClick}>Paddock</a>
+            <a href="/paddock/profile" class="mobile-nav-item" on:click={handleNavClick}>Profile</a>
+            <a href="/paddock/events" class="mobile-nav-item" on:click={handleNavClick}>Events</a>
+            <a href="/paddock/blog" class="mobile-nav-item" on:click={handleNavClick}>Blog</a>
+            <a href="/paddock/gallery" class="mobile-nav-item" on:click={handleNavClick}>Gallery</a>
             <button class="mobile-nav-item signout" on:click={handleSignOut}>Sign Out</button>
           {:else}
             <a href="/login" class="mobile-nav-item" on:click={handleNavClick}>Login</a>
@@ -126,8 +129,11 @@
             <button class="menu-button" on:click={() => menuOpen = !menuOpen}>Menu</button>
             {#if menuOpen}
               <div class="popup-menu">
-                <a href="/console/profile" class="menu-item" on:click={handleNavClick}>Profile</a>
-                <a href="/console" class="menu-item" on:click={handleNavClick}>Console</a>
+                <a href="/paddock" class="menu-item" on:click={handleNavClick}>Paddock</a>
+                <a href="/paddock/profile" class="menu-item" on:click={handleNavClick}>Profile</a>
+                <a href="/paddock/events" class="menu-item" on:click={handleNavClick}>Events</a>
+                <a href="/paddock/blog" class="menu-item" on:click={handleNavClick}>Blog</a>
+                <a href="/paddock/gallery" class="menu-item" on:click={handleNavClick}>Gallery</a>
                 <button class="menu-item signout" on:click={handleSignOut}>Sign Out</button>
               </div>
             {/if}
