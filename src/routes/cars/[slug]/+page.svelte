@@ -491,7 +491,7 @@
   /* Mobile Styling */
   @media screen and (max-width: 1080px) {
     #page-entrance #page-entrance-content {
-      flex-direction: column-reverse;
+      flex-direction: column;
       width: 100%;
       bottom: 0;
       left: 0;
@@ -500,7 +500,7 @@
       bottom: 13vh;
     }
     #page-entrance-content h1 {
-      margin-top: 2rem;
+      margin-bottom: 2rem;
       font-size: 4rem;
       width: 85%;
       padding-right: 5%;
