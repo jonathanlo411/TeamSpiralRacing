@@ -14,16 +14,17 @@ generator client {
 }
 
 model User {
-  id        String    @id @default(auto()) @map("_id") @db.ObjectId
-  email     String    @unique
-  password  String
-  firstName String
-  lastName  String
-  cars      String[]
-  role      UserRole  @default(USER)
-  sessions  Session[]
-  trackTimes TrackTime[]
-  BlogPost BlogPost[] @relation("BlogPosts")
+  id          String    @id @default(auto()) @map("_id") @db.ObjectId
+  email       String    @unique
+  password    String
+  firstName   String
+  lastName    String
+  cars        String[]
+  role        UserRole  @default(USER)
+  sessions    Session[]
+  trackTimes  TrackTime[]
+  BlogPost    BlogPost[] @relation("BlogPosts")
+  Event       Event[]
 }
 
 model Session {
@@ -60,4 +61,17 @@ model TrackTime {
   proof         String
   userId        String   @db.ObjectId
   user          User     @relation(fields: [userId], references: [id])
+}
+
+model Event {
+  id          String   @id @default(cuid()) @map("_id")
+  title       String
+  imageRef    String
+  datetime    DateTime
+  location    String
+  description String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  createdBy   User     @relation(fields: [createdById], references: [id])
+  createdById String   @db.ObjectId
 }
