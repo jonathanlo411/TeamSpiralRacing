@@ -21,11 +21,23 @@
 
   <section id="navigate" class="paddock-sec">
     <h2>Navigate</h2>
+    {#if data.user && data.user.role === "USER"}
+    <div id="not-allowed">
+      <div>
+        <span class="material-symbols-outlined">report</span>
+        <h4>You currently have role USER. To apply to the driver, staff, or admin roles, please contact <a href="mailto:contact@teamspiralracing.com">contact@teamspiralracing.com</a></h4>
+      </div>
+    </div>
+    {/if}
     <div id="nav-grid">
-      <a href="/paddock/events" class="nav-item" style="background-image: url('/paddock-nav-1.jpg')"><h4>Events</h4></a>
-      <a href="/paddock/blog" class="nav-item" style="background-image: url('/paddock-nav-2.jpg')"><h4>Blog</h4></a>
-      <a href="/paddock/timing" class="nav-item" style="background-image: url('/paddock-nav-3.jpg')"><h4>Timing</h4></a>
-      <a href="/paddock/gallery" class="nav-item" style="background-image: url('/paddock-nav-4.jpg')"><h4>Gallery</h4></a>
+      {#if data.user && data.user.role !== "USER"}
+        <a href="/paddock/events" class="nav-item" style="background-image: url('/paddock-nav-1.jpg')"><h4>Events</h4></a>
+        <a href="/paddock/blog" class="nav-item" style="background-image: url('/paddock-nav-2.jpg')"><h4>Blog</h4></a>
+        <a href="/paddock/timing" class="nav-item" style="background-image: url('/paddock-nav-3.jpg')"><h4>Timing</h4></a>
+        <a href="/paddock/gallery" class="nav-item" style="background-image: url('/paddock-nav-4.jpg')"><h4>Gallery</h4></a>
+      {:else}
+        <a href="/paddock/gallery" class="nav-item" style="background-image: url('/paddock-nav-4.jpg')"><h4>Gallery</h4></a>
+      {/if}
     </div>
   </section>
 
@@ -124,5 +136,34 @@
     font-size: 3rem;
     bottom: 1em;
     left: 1em;
+  }
+
+  
+  /* Error Message */
+  #not-allowed {
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    justify-content: space-around;
+    padding: 1.5rem;
+    background-color: rgba(255, 137, 131, 0.15);
+    border: 1px solid red;
+    border-radius: 10px;
+    margin: 3rem 0 1.5rem;
+    color: red;
+    width: 100%;
+    --font-size: 1.25rem;
+    font-size: var(--font-size);
+  }
+  #not-allowed > div {
+    display: flex;
+    align-items: center;
+  }
+  #not-allowed span {
+    font-size: calc(var(--font-size) * 1.5);
+    padding-right: 0.5rem;
+  }
+  #not-allowed a {
+    color: var(--highlight);
   }
 </style>
