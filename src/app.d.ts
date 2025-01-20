@@ -105,6 +105,7 @@ declare global {
   export interface BlogPost {
     id: string;
     title: string;
+    imageRef: string;
     content: string;
     authorId: string;
     createdAt: Date;

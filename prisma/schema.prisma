@@ -23,6 +23,7 @@ model User {
   role      UserRole  @default(USER)
   sessions  Session[]
   trackTimes TrackTime[]
+  BlogPost BlogPost[] @relation("BlogPosts")
 }
 
 model Session {
@@ -39,12 +40,13 @@ enum UserRole {
 }
 
 model BlogPost {
-  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  id        String   @id @default(cuid()) @map("_id")
   title     String
+  imageRef  String
   content   String
-  authorId  String   @db.ObjectId
-  status    String   @default("draft")
   createdAt DateTime @default(now())
+  author    User     @relation(fields: [authorId], references: [id], "BlogPosts")
+  authorId  String   @db.ObjectId
 }
 
 model TrackTime {

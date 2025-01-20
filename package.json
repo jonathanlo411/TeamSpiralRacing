@@ -26,11 +26,14 @@
 	"dependencies": {
 		"@aws-sdk/client-s3": "^3.726.1",
 		"@aws-sdk/s3-request-presigner": "^3.731.1",
+		"@cartamd/plugin-code": "^4.0.6",
 		"@oslojs/crypto": "^1.0.1",
 		"@oslojs/encoding": "^1.1.0",
 		"@prisma/client": "^6.2.1",
 		"@slidy/svelte": "^3.5.3",
 		"@types/bcryptjs": "^2.4.6",
-		"bcryptjs": "^2.4.3"
+		"bcryptjs": "^2.4.3",
+		"carta-md": "^4.6.7",
+		"isomorphic-dompurify": "^2.20.0"
 	}
 }
