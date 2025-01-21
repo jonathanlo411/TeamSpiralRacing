@@ -56,4 +56,5 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Output Release URL
-      run: echo "Release URL: ${{ steps.release.outputs.html_url }}"
+      run: |
+        echo "Release URL: ${{ steps.release.outputs.html_url }}"
