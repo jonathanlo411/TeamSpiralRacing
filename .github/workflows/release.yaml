@@ -25,18 +25,22 @@ jobs:
 
     - name: Build Docker image
       run: |
-        docker build -t ghcr.io/${{ github.repository }}:${{ github.ref_name }} .
+        REPO_NAME=${{ github.repository }}
+        LOWERCASE_REPO_NAME=$(echo "$REPO_NAME" | tr '[:upper:]' '[:lower:]')
+        docker build -t ghcr.io/${{ github.actor }}/$LOWERCASE_REPO_NAME:${{ github.ref_name }} .
 
     - name: Push Docker image to GitHub Container Registry
       run: |
-        docker push ghcr.io/${{ github.repository }}:${{ github.ref_name }}
+        REPO_NAME=${{ github.repository }}
+        LOWERCASE_REPO_NAME=$(echo "$REPO_NAME" | tr '[:upper:]' '[:lower:]')
+        docker push ghcr.io/${{ github.actor }}/$LOWERCASE_REPO_NAME:${{ github.ref_name }}
 
     - name: Create a GitHub Release
       id: release
       uses: softprops/action-gh-release@v1
       with:
         files: |
-          ./path/to/your/output/files/*.tar.gz   # You can include any other artifacts you want to attach to the release
+          ./path/to/your/output/files/*.tar.gz   
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
