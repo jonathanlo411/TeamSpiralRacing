@@ -45,8 +45,8 @@ jobs:
 
     - name: Create .tar.gz archive of repository files
       run: |
-        # Create a tarball of the repository
-        tar -czf release-${{ github.ref_name }}.tar.gz --exclude .git --exclude .github .
+        git clean -fdx  # Remove untracked files and directories
+        tar -czf release-${{ github.ref_name }}.tar.gz --exclude .git --exclude .github --exclude .env .
 
     - name: Upload .tar.gz archive as a GitHub Release asset
       id: release
