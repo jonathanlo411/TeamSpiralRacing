@@ -3,7 +3,7 @@ name: Build Docker Image and Publish Release
 on:
   push:
     tags:
-      - 'v*.*.*'  # Triggers on tag push (e.g., v1.0.0, v1.2.3)
+      - 'v*.*.*'
 
 jobs:
   build_and_release:
@@ -35,14 +35,30 @@ jobs:
         LOWERCASE_REPO_NAME=$(echo "$REPO_NAME" | tr '[:upper:]' '[:lower:]')
         docker push ghcr.io/${{ github.actor }}/$LOWERCASE_REPO_NAME:${{ github.ref_name }}
 
-    - name: Create a GitHub Release
+    - name: Generate release notes
+      id: generate_release_notes
+      run: |
+        release_notes=$(git log $(git describe --tags --abbrev=0)..HEAD --pretty=format:"* %s (%an)" | sed 's/\\n/\\n\\n/g')
+        echo "RELEASE_NOTES<<EOF" >> $GITHUB_ENV
+        echo "$release_notes" >> $GITHUB_ENV
+        echo "EOF" >> $GITHUB_ENV
+
+    - name: Create .tar.gz archive of repository files
+      run: |
+        # Create a tarball of the repository
+        tar -czf release-${{ github.ref_name }}.tar.gz --exclude .git --exclude .github .
+
+    - name: Upload .tar.gz archive as a GitHub Release asset
       id: release
       uses: softprops/action-gh-release@v1
       with:
-        files: |
-          ./path/to/your/output/files/*.tar.gz   
+        tag_name: ${{ github.ref_name }}
+        release_name: Release ${{ github.ref_name }}
+        body: ${{ env.RELEASE_NOTES }}
+        files: release-${{ github.ref_name }}.tar.gz
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Output Release URL
-      run: echo "Release URL: ${{ steps.release.outputs.html_url }}"
+      run: |
+        echo "Release URL: ${{ steps.release.outputs.html_url }}"
