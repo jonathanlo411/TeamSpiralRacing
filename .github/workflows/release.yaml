@@ -45,8 +45,7 @@ jobs:
 
     - name: Create .tar.gz archive of repository files
       run: |
-        git clean -fdx  # Remove untracked files and directories
-        tar -czf release-${{ github.ref_name }}.tar.gz --exclude .git --exclude .github --exclude .env .
+        git archive --format=tar.gz --prefix=TeamSpiralRacing/ -o release-${{ github.ref_name }}.tar.gz HEAD
 
     - name: Upload .tar.gz archive as a GitHub Release asset
       id: release
