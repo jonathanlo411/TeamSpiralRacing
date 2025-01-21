@@ -1,14 +1,14 @@
-name: Build and Push Docker Image to GitHub Container Registry
+name: Build Docker Image and Publish Release
 
 on:
   push:
     tags:
-      - 'v*.*.*'  # Matches tags like v0.1.0, v1.2.3, etc.
+      - 'v*.*.*'  # Triggers on tag push (e.g., v1.0.0, v1.2.3)
 
 jobs:
-  build:
+  build_and_release:
     runs-on: ubuntu-latest
-    
+
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
@@ -31,3 +31,14 @@ jobs:
       run: |
         docker push ghcr.io/${{ github.repository }}:${{ github.ref_name }}
 
+    - name: Create a GitHub Release
+      id: release
+      uses: softprops/action-gh-release@v1
+      with:
+        files: |
+          ./path/to/your/output/files/*.tar.gz   # You can include any other artifacts you want to attach to the release
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Output Release URL
+      run: echo "Release URL: ${{ steps.release.outputs.html_url }}"
