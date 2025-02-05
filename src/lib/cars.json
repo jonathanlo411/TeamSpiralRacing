@@ -18,7 +18,8 @@
                     "GodSpeed MonoRS Coilovers (10k/10k)"
                 ],
                 "body": [
-                    "Forbidden USA Mugen Style Hardtop"
+                    "Forbidden USA Mugen Style Hardtop",
+                    "OEM Duckbill"
                 ],
                 "interior": [],
                 "misc": [
@@ -40,7 +41,8 @@
                     "SBG FPSpec Sway Bar (Rear)"
                 ],
                 "body": [
-                    "Forbidden USA Mugen Style Hardtop"
+                    "Forbidden USA Mugen Style Hardtop",
+                    "OEM Duckbill"
                 ],
                 "interior": [
                     "Renegade Extended Shift Knob",
@@ -49,6 +51,42 @@
                 "misc": [
                     "17x9.5 + 51 Titan 7 T-R10s",
                     "255 Square RE-71RS"
+                ]
+            },
+            {
+                "tag": "v3",
+                "updateDate": "2025.02.01",
+                "description": "Changes to the body were made, adding aero to keep the car stable at higher speeds. In addition, there were some changes to the underbody to bolster the longevity and reliability of the car.",
+                "power": [
+                    "K&N Air Filter",
+                    "Buddy Club Spec II Exhaust"
+                ],
+                "underbody": [
+                    "SBG Ohlins DFV (14k/12k)",
+                    "SBG FPSpec Sway Bar (Front)",
+                    "SBG FPSpec Sway Bar (Rear)",
+                    "Ballade Sports RCA (Front)",
+                    "Ballade Sports RCA (Rear)",
+                    "StopTech SS Brake Lines"
+                ],
+                "body": [
+                    "Forbidden USA Mugen Style Hardtop",
+                    "Voltex Front Bumper (Circuit)",
+                    "Voltex Front Bumper Canards",
+                    "Voltex Type 2 1700mm GT Wing",
+                    "Baero GT Wing Base Plates",
+                    "CR Trunk Reinforcments",
+                    "EVS Tuning Tow Hook (Voltex)",
+                    "Avery Gloss Dark Green Pearl Wrap"
+                ],
+                "interior": [
+                    "Renegade Extended Shift Knob",
+                    "Retivis RA86 GMRS Radio"
+                ],
+                "misc": [
+                    "17x9.5 + 51 Titan 7 T-R10s",
+                    "255 Square RE-71RS",
+                    "ATE 200 DOT4 Brake Fluid"
                 ]
             }
         ]
