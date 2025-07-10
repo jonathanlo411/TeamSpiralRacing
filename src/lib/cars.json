@@ -109,7 +109,7 @@
                 "body": [],
                 "interior": [],
                 "misc": [
-                    "AP2v1 Wheels",
+                    "AP2v2 Wheels",
                     "215/245 All seasons"
                 ]
             },
@@ -130,8 +130,31 @@
                     "Retivis RA86 GMRS Radio"
                 ],
                 "misc": [
-                    "AP2v2 Wheels",
-                    "215/245 RT660"
+                    "AP2v1 Wheels",
+                    "215/245 Falken Azenis RT660"
+                ]
+            },
+            {
+                "tag": "v1.2",
+                "updateDate": "2025.07.10",
+                "description": "Small updates to the car as things broke while tracking the car.",
+                "power": [
+                    "K&N Intake",
+                    "Clutch Masters Lightweight Steel Flywheel 13lbs",
+                    "Exedy OEM Clutch Kit and Pressure Plate",
+                    "Ballade Sports 76mm Step Up HFC"
+                ],
+                "underbody": [
+                    "Porterfield R4S Brakepads"
+                ],
+                "body": [],
+                "interior": [
+                    "Renegade Extended Shift Knob"
+                ],
+                "misc": [
+                    "AP2v1 Wheels",
+                    "215/245 Falken Azenis RT660",
+                    "Robbins Stayfast Black Softtop"
                 ]
             }
         ]
