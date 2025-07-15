@@ -7,6 +7,22 @@
         "location": "34.875°, -118.262°",
         "configuration": ["CW", "CCW"]
     },
+    "buttonwillow": {
+        "name": "Buttonwillow Raceway",
+        "type": "Race Track",
+        "description": "Buttonwillow Raceway Park is one of the premiere road racing and testing facilities in The United States.",
+        "turns": 21,
+        "location": "35.489°, -119.544°",
+        "configuration": ["13CW"]
+    },
+    "buttonwillow-circuit": {
+        "name": "Buttonwillow - Circuit",
+        "type": "Race Track",
+        "description": "The newest track, Circuit is 2.56 miles and 40 ft wide all around with a 50 ft wide front straight. Opening to the public January 2025.",
+        "turns": 10,
+        "location": "35.497°, -119.555",
+        "configuration": ["CW"]
+    },
     "palomar-mt-sth": {
         "name": "Palomar Mountain South Grade",
         "type": "Road Course",
