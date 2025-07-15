@@ -67,7 +67,7 @@
     left: 12vw;
   }
   #page-entrance-content h1 {
-    font-size: 12rem;
+    font-size: calc(12 * var(--font-size));
     font-weight: 900;
   }
 
@@ -77,7 +77,7 @@
     margin: 5rem auto;
   }
   #drivers > h2 {
-    font-size: 3.5rem;
+    font-size: calc(3.5 * var(--font-size));
     margin: 3vh auto;
   }
   #driver-grid {
@@ -156,7 +156,7 @@
   .content span {
     position: absolute;
     left: 5%;
-    font-size: 6rem;
+    font-size: calc(6 * var(--font-size));
     z-index: 1;
     font-family: 'Racing Sans One';
   }
@@ -172,7 +172,7 @@
   .content .driver-name {
     z-index: 4;
     position: absolute;
-    font-size: 3rem;
+    font-size: calc(3 * var(--font-size));
     font-weight: 900;
     bottom: 0.5em;
     left: 0.5em;

@@ -253,7 +253,7 @@
     margin: 2rem 0;
   }
   #page-entrance-content h4 {
-    font-size: 2rem;
+    font-size: calc(2 * var(--font-size));
     font-weight: 300;
     width: 50%;
     margin-bottom: 2rem;
@@ -265,7 +265,7 @@
     background-color: var(--highlight);
     color: white;
     padding: 1rem 2rem;
-    font-size: 1.3rem;
+    font-size: calc(1.3 * var(--font-size));
     border: none;
     border-radius: 1000px;
     font-weight: 700;
@@ -280,12 +280,12 @@
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    height: 70vh;
+    height: max(70vh, auto);
     width: 80%;
     margin: 5vh auto;
   }
   #intro h2 {
-    font-size: 4rem;
+    font-size: calc(4 * var(--font-size));
     text-align: center;
     margin-bottom: 5vh;
   }
@@ -297,11 +297,10 @@
   }
   #description p {
     margin: 0;
-    font-size: 1.1rem;
     line-height: 1.6;
     padding: 2rem;
     max-width: 45%; 
-    font-size: 1.5rem;
+    font-size: calc(1.3 * var(--font-size));
   }
   #carousel {
     max-width: 45%; 
@@ -314,7 +313,7 @@
     flex-direction: row;
     background-color: white;
     color: black;
-    height: 75vh;
+    height: max(75vh, auto);
   }
   #join #gmap {
     width: 50%;
@@ -331,11 +330,11 @@
     margin: auto;
   }
   #join-info #upper h2 {
-    font-size: 4rem;
+    font-size: calc(4 * var(--font-size));
     margin: 5vh auto 0;
   }
   #join-info #upper p {
-    font-size: 1.5rem;
+    font-size: calc(1.5 * var(--font-size));
     margin-bottom: 2.5vh;
   }
 
@@ -345,10 +344,10 @@
     justify-content: space-between;
   }
   .stat h3 {
-    font-size: 4rem;
+    font-size: calc(3 * var(--font-size));
   }
   .stat h5 {
-    font-size: 1.7em;
+    font-size: calc(1.3 * var(--font-size));
     font-weight: 400;
   }
 
@@ -359,17 +358,17 @@
     flex-direction: column;
   }
   #lower img {
-    height: 10rem;
+    height: calc(10 * var(--font-size));
     width: auto;
   }
   #lower p {
-    font-size: 1.5rem;
+    font-size: calc(1.5 * var(--font-size));
   }
   #lower button {
     background-color: #7289da;
     color: white;
     padding: 1rem 2rem;
-    font-size: 1rem;
+    font-size: var(--font-size);
     border: none;
     border-radius: 5px;
     font-weight: 700;
@@ -381,7 +380,7 @@
 
   /* Stories */
   #stories h2 {
-    font-size: 4rem;
+    font-size: calc(4 * var(--font-size));
     text-align: center;
     margin: 5vh auto;
   }
@@ -430,10 +429,10 @@
     z-index: 2;
   }
   .story-info h3 {
-    font-size: 2.5rem;
+    font-size: calc(2.5 * var(--font-size));
     padding-right: 2.5em;
   }
-  .story-info p { font-size: 1.2rem; margin-top: 0.5rem; }
+  .story-info p { font-size: calc(1.2 * var(--font-size)); margin-top: 0.5rem; }
 
   .story-1 { grid-column: span 2; }
   .story-4 { grid-column: span 2; }
@@ -448,7 +447,7 @@
     background-color: var(--highlight);
     color: white;
     padding: 1rem 2rem;
-    font-size: 1rem;
+    font-size: var(--font-size);
     border: none;
     border-radius: 5px;
     font-weight: 700;
@@ -471,7 +470,7 @@
       margin: 2rem 0;
     }
     #page-entrance-content h4 {
-      font-size: 1.5rem;
+      font-size: calc(1.5 * var(--font-size));
       font-weight: 300;
       margin-bottom: 2rem;
       width: 100%;

@@ -212,6 +212,7 @@
 
     /* Size vars */
     --central-width: calc(min(90%, 1500px) - 3.5rem);
+    --font-size: 1rem;
   }
 
   /* Nav Bar */
@@ -298,13 +299,13 @@
   }
 
   #left #upper h2 {
-    font-size: 3rem;
+    font-size: calc(3 * var(--font-size));
     font-weight: 500;
   }
   #left #upper a {
     color: white;
     text-decoration: none;
-    font-size: 1.3rem;
+    font-size: calc(1.3 * var(--font-size));
     font-weight: 300;
     transition: 0.3s;
   }
@@ -319,12 +320,12 @@
     text-decoration: none;
     color: white;
     margin-right: 3rem;
-    font-size: 1.4rem;
+    font-size: calc(1.4 * var(--font-size));
   }
   #left #lower #chore-row *:hover { text-decoration: underline; }
   #left #lower span {
     color: #A8A8A8;
-    font-size: 0.9rem;
+    font-size: calc(0.9 * var(--font-size));
   }
 
   footer #right {
@@ -334,7 +335,7 @@
     align-items: center;
   }
   #right h3 {
-    font-size: 1.7rem;
+    font-size: calc(1.7 * var(--font-size));
     font-weight: 400;
   }
   #right #split { display: flex; }
@@ -347,7 +348,7 @@
     color: #D2D2D2;
     text-decoration: none;
     font-weight: 300;
-    font-size: 1.2rem;
+    font-size: calc(1.2 * var(--font-size));
     margin: 0.4rem 1rem 0.4rem 0;
   }
   #right #split > div a:hover { color: white; }
@@ -366,7 +367,7 @@
     outline: none;
     border: none;
     border-radius: 5px;
-    font-size: 1rem;
+    font-size: var(--font-size);
     font-weight: bold;
     padding: 0.5rem 1rem;
     cursor: pointer;
@@ -414,6 +415,12 @@
     font-weight: normal;
     cursor: pointer;
     padding: 0.75rem 1rem;
+  }
+
+  @media screen and (min-width: 1080px) and (max-width: 1920px) {
+    :global(body) {
+      --font-size: 0.8rem
+    }
   }
 
   /* Mobile Styling */

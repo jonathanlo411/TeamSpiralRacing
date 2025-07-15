@@ -77,7 +77,7 @@
     left: 12vw;
   }
   #page-entrance-content h1 {
-    font-size: 12rem;
+    font-size: calc(12 * var(--font-size));
     font-weight: 900;
   }
 
@@ -87,7 +87,7 @@
     margin: 5rem auto;
   }
   #tracks > h2 {
-    font-size: 3.5rem;
+    font-size: calc(3.5* var(--font-size));
     margin: 3vh auto;
   }
 
