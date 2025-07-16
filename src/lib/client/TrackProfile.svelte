@@ -81,7 +81,7 @@
     bottom: 3rem;
     left: 3rem;
     z-index: 3;
-    font-size: 5rem;
+    font-size: calc(5 * var(--font-size));
   }
   .content img {
     position: absolute;

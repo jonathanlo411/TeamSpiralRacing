@@ -305,7 +305,7 @@
     align-items: center;
   }
   #page-entrance-content h1 {
-    font-size: 12rem;
+    font-size: calc(12 * var(--font-size));
     font-weight: 900;
     width: 30%;
   }
@@ -334,11 +334,11 @@
     border-top: none;
   }
   #info-sec span h5 {
-    font-size: 2rem;
+    font-size: calc(2 * var(--font-size));
     font-weight: 800;
   }
   #info-sec span h6 {
-    font-size: 1.5rem;
+    font-size: calc(1.5 * var(--font-size));
     font-weight: 400;
   }
 
@@ -346,11 +346,11 @@
   #description {
     width: var(--central-width);
     margin: 5vh auto;
-    font-size: 1.5rem;
+    font-size: calc(1.5 * var(--font-size));
     line-height: 2rem;
   }
   section h2 {
-    font-size: 2.5rem;
+    font-size: calc(2.5 * var(--font-size));
     margin: 2rem 0;
   }
   :global(#description a), :global(#description a:visited) {
@@ -368,7 +368,7 @@
   #mods {
     width: var(--central-width);
     margin: 5vh auto;
-    font-size: 1.5rem;
+    font-size: calc(1.5 * var(--font-size));
     line-height: 2rem;
   }
   #mods > p {
@@ -405,13 +405,13 @@
     width: fit-content;
   }
   #comparison h3 {
-    font-size: 1.3rem;
+    font-size: calc(1.3 * var(--font-size));
     font-weight: 400;
     margin-right: 1.2rem;
     color: var(--font-color);
   }
   #comparison select {
-    font-size: 1rem;
+    font-size: var(--font-size);
     font-weight: 400;
     padding: 0.5rem 3rem;
     color: var(--font-color);
@@ -424,7 +424,7 @@
     font-family: 'Roboto';
   }
   #comparison h6 {
-    font-size: 1.7rem;
+    font-size: calc(1.7 * var(--font-size));
     font-weight: 700;
   }
   .mod-item.added {
@@ -443,7 +443,7 @@
   #timeline {
     width: var(--central-width);
     margin: 5vh auto;
-    font-size: 1.5rem;
+    font-size: calc(1.5 * var(--font-size))m;
     line-height: 2rem;
   }
   .timeline-container {
@@ -475,15 +475,15 @@
   .tag {
     display: block;
     font-weight: bold;
-    font-size: 2rem;
+    font-size: calc(2 * var(--font-size));
   }
   .date {
-    font-size: 0.9rem;
+    font-size: calc(0.9 * var(--font-size));
     opacity: 0.8;
     }
   .description {
     flex-grow: 1;
-    font-size: 1.2rem;
+    font-size: calc(1.2 * var(--font-size));
     font-weight: 200;
   }
 

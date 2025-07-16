@@ -81,7 +81,7 @@
     left: 12vw;
   }
   #page-entrance-content h1 {
-    font-size: 8rem;
+    font-size: calc(6 * var(--font-size));
     width: 70%;
     margin-bottom: 2rem;
   }
@@ -92,7 +92,7 @@
     margin: 5rem auto;
   }
   .paddock-sec h2 {
-    font-size: 3.75rem;
+    font-size: calc(3.75 * var(--font-size));
     margin-bottom: 2.5rem;
   }
 
@@ -133,7 +133,7 @@
   .nav-item h4 {
     position: absolute;
     z-index: 2;
-    font-size: 3rem;
+    font-size: calc(3 * var(--font-size));
     bottom: 1em;
     left: 1em;
   }
@@ -143,7 +143,6 @@
   #not-allowed {
     display: flex;
     align-items: center;
-    font-size: 1rem;
     justify-content: space-around;
     padding: 1.5rem;
     background-color: rgba(255, 137, 131, 0.15);
@@ -152,7 +151,6 @@
     margin: 3rem 0 1.5rem;
     color: red;
     width: 100%;
-    --font-size: 1.25rem;
     font-size: var(--font-size);
   }
   #not-allowed > div {

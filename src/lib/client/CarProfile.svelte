@@ -105,7 +105,7 @@
     height: 650px;
   }
   .content h1 {
-    font-size: 10rem;
+    font-size: calc(10 * var(--font-size));
     position: absolute;
     padding-right: 2rem;
     display: inline-block;

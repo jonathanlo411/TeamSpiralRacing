@@ -98,7 +98,7 @@
     align-items: center;
   }
   #page-entrance-content h1 {
-    font-size: 12rem;
+    font-size: calc(10 * var(--font-size));
     font-weight: 900;
     width: 30%;
   }
@@ -124,11 +124,11 @@
     border-top: none;
   }
   #info-sec span h5 {
-    font-size: 2rem;
+    font-size: calc(2 * var(--font-size));
     font-weight: 800;
   }
   #info-sec span h6 {
-    font-size: 1.5rem;
+    font-size: calc(1.5 * var(--font-size));
     font-weight: 400;
   }
 
@@ -136,11 +136,11 @@
   #description {
     width: var(--central-width);
     margin: 5vh auto;
-    font-size: 1.5rem;
+    font-size: calc(1.5 * var(--font-size));
     line-height: 2rem;
   }
   section h2 {
-    font-size: 2.5rem;
+    font-size: calc(2.5 * var(--font-size));
     margin: 2rem 0;
   }
   :global(#description a), :global(#description a:visited) {
