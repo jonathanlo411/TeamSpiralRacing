@@ -23,12 +23,20 @@
         "location": "35.497°, -119.554°",
         "configuration": ["Circuit"]
     },
-    "palomar-mt-sth": {
+    "palomar-mt-south": {
         "name": "Palomar Mountain South Grade",
         "type": "Road Course",
-        "description": "The Palomar Mountain South Grade is a winding, steep, and scenic road with numerous sharp switchbacks that provides access to the summit of Palomar Mountain. It is more technical compared to its <a href=\"/times/palomar-mt-est\">East Grade</a> brother and accidents may occur if the driver is inattentive.",
+        "description": "The Palomar Mountain South Grade is a winding, steep, and scenic road with numerous sharp switchbacks that provides access to the summit of Palomar Mountain. It is more technical compared to its <a href=\"/times/palomar-mt-east\">East Grade</a> brother and accidents may occur if the driver is inattentive.",
         "turns": 63,
         "location": "33.294°, -116.898°",
+        "configuration": ["Downhill", "Uphill"]
+    },
+    "palomar-mt-east": {
+        "name": "Palomar Mountain East Grade",
+        "type": "Road Course",
+        "description": "The Palomar Mountain East Grade is a sweep and scenic road with numerous high speed areas. It is not as technical compared to its <a href=\"/times/palomar-mt-south\">South Grade</a> brother and but if things go wrong, the consequences are higher.",
+        "turns": 67,
+        "location": "33.256°, -116.760°",
         "configuration": ["Downhill", "Uphill"]
     }
 }
