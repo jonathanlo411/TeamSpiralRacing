@@ -36,7 +36,7 @@
         </span>
         <span>
           <h5>Location</h5>
-          <h6>{trackData.location}</h6>
+          <h6><a href="https://www.google.com/maps/@{trackData.location.replaceAll('°', '').replaceAll(' ' , '')},17z" target="_blank">{trackData.location}</a></h6>
         </span>
 
       </div>
@@ -119,6 +119,15 @@
   #info-sec span h6 {
     font-size: calc(1.5 * var(--font-size));
     font-weight: 400;
+    border-radius: 5px;
+    transition: 0.2s;
+  }
+  #info-sec span h6:hover {
+    background-color: rgb(131, 131, 131);
+  }
+  #info-sec span h6 a {
+    color: white;
+    text-decoration: none;
   }
 
   /* Driver Description */
