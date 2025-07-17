@@ -2,13 +2,16 @@
   import type { PageData } from './$types';
   import { page } from '$app/stores';
   import drivers from '$lib/drivers.json';
+  import cars from '$lib/cars.json';
   import CarProfile from '$lib/client/CarProfile.svelte'
 
   // Load driver data
   const driverList: Drivers = drivers;
+  const carList: Cars = cars;
   export let data: PageData;
   let driverData: driverDataType = driverList[data.driver];
-  
+  let driverCar = carList[driverData["cars"][0]]
+
   // Update page data if redirecting to other driver
   $: driverData = driverList[$page.params.slug];
 </script>
@@ -38,7 +41,7 @@
         <span>
           <h5>Car</h5>
           <spacer></spacer>
-          <h6>{driverData.car}</h6>
+          <h6>{driverCar.year} {driverCar.make} {driverCar.model}</h6>
         </span>
 
       </div>
@@ -112,7 +115,6 @@
     display: flex;
     flex-direction: column;
     height: fit-content;
-    width: 25%;
   }
   #info-sec span {
     padding: var(--font-size) 0;

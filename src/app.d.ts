@@ -35,7 +35,6 @@ declare global {
   interface driverDataType {
     driver: string,
     racingNumber: number,
-    car: string,
     birthday: string,
     cars: Array<string>,
     description: string

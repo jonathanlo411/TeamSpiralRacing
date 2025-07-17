@@ -2,7 +2,6 @@
     "thomas-lo": {
         "driver": "Thomas Lo",
         "racingNumber": 88,
-        "car": "2006 Honda S2000",
         "birthday": "2004.07.24",
         "cars": ["rh"],
         "description": "Thomas's interest in automotive sports began during his teenage years when his brother started driving \"enthusiatically\" with the family's 2002 Honda CR-V. This exposure to spirited driving ignited a curiosity that later grew through the racing simulator Assetto Corsa. Starting with a basic mouse-and-keyboard setup, he quickly became captivated by the complexity racing entailed. As his enthusiasm for racing grew, he upgraded to a sim wheel (Logitech G29), allowing him to explore more driving techniques and understand basic concepts of driving such as understeer and oversteer. His early foundations on simracing shaped his aggressive and pushing the limits style he enjoys today.<br><br>In 2022, Thomas enrolled at the University of California, Riverside, majoring in mechanical engineering. This academic pursuit provided him with the technical foundation to explore his hobby with an analytical style. By studying mechanical engineering Thomas gained a deeper understanding of how fluid dynamics and vehicle dynamics influence suspension and aerodynamic performance. This knowledge allowed him to analyze and appreciate how different aero and suspension setups impact a car's handling and overall behavior on the track.<br><img src=\"/drivers/assets/mechanical.jpg\" alt=\"mechanical engineering class\" /><br>With his brother's support and assistance, Thomas eventually purchased his own stock Honda S2000. Together, they embarked 1,500-mile road trip, through rain and snow. Prior to getting his own car, Thomas learned to drive manual on his brother Jonathan's S2000. At the same time, he also began learning how to ride motorcycles. Drawn in by the sheer fun and freedom both motorcycles and enthusiast cars offered, Thomas often cruised canyons with friends on popular roads such as Angeles Crest Highway and HWY - 39.<br><div class=\"p-img\"><img src=\"/drivers/assets/canyon.jpg\" alt=\"cars at a canyon\" /><img src=\"/drivers/assets/moto.jpg\" alt=\"thomas on a motorcycle\" /></div><br>By blending his technical expertise with his passion for driving, Thomas has carved out a unique and exciting path in the world of automotive sports. Today, he continues to refine his skills behind the wheel of his S2000, balancing technical mastery with his passion for racing, as he explores new tracks and challenges both virtually and in real life."
@@ -10,7 +9,6 @@
     "jonathan-lo": {
         "driver": "Jonathan Lo",
         "racingNumber": 411,
-        "car": "2007 Honda S2000",
         "birthday": "2002.04.11",
         "cars": [
             "hyperion"
