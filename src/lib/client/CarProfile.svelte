@@ -156,7 +156,17 @@
   }
   .up-button { transform: rotate(-90deg); }
   .down-button { transform: rotate(90deg); }
-  
+
+  /* Medium Styling */
+  @media screen and (min-width: 1080px) and (max-width: 1920px) {
+    .car-card .content {
+      height: 550px;
+    }
+    .content img {
+      padding-top: 10rem;
+    }
+  }
+
   /* Mobile Styling */
   @media screen and (max-width: 1080px) {
     .car-card, .car-card:visited {

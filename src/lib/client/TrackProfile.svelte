@@ -92,25 +92,30 @@
     max-width: 30%;
   }
 
+  /* Medium Styling */
+  @media screen and (min-width: 1080px) and (max-width: 1920px) {
+    .track-card .content {
+      height: 500px;
+    }
+  }
+
   /* Mobile Styling */
   @media screen and (max-width: 1080px) {
     .track-card, .track-card:visited {
       padding: 1rem;
     }
-    
-  .track-card .content {
-    height: 400px;
-  }
-  .content h1 {
-    bottom: 1.5rem;
-    left: 1.5rem;
-    font-size: 2.75rem;
-    padding-right: 1.5rem;
-  }
-  .content img {
-    display: none;
-  }
 
-
+    .track-card .content {
+      height: 400px;
+    }
+    .content h1 {
+      bottom: 1.5rem;
+      left: 1.5rem;
+      font-size: 2.75rem;
+      padding-right: 1.5rem;
+    }
+    .content img {
+      display: none;
+    }
   }
 </style>
