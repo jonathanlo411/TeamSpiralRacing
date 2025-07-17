@@ -110,6 +110,18 @@ declare global {
     createdAt: Date;
     status: 'draft' | 'published';
   }
+
+  // Times
+  interface TimingResponse extends Object {
+    rank: number,
+		driver: string,
+		date: date,
+		car: string,
+    tag: string,
+		time: string,
+		proof: string,
+	}
+
 }
 
 export {};

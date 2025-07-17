@@ -2,12 +2,48 @@
   import type { PageData } from './$types';
   import { page } from '$app/stores';
   import tracks from '$lib/tracks.json';
+  import Modal from 'svelte-simple-modal'
+  import TableRow from '$lib/client/tableRow.svelte';
+  import SimpleSelect from '$lib/client/SimpleSelect.svelte'
 
   // Load track data
   const trackList: Tracks = tracks;
   export let data: PageData;
-  let trackData = trackList[data.track]
-  
+  let trackData: any = trackList[data.track]
+
+  // Clean timing
+  function formatTime(seconds: number): string {
+    const totalMilliseconds = Math.floor(seconds * 1000);
+    const ms = totalMilliseconds % 1000;
+    const totalSeconds = Math.floor(totalMilliseconds / 1000);
+    const s = totalSeconds % 60;
+    const totalMinutes = Math.floor(totalSeconds / 60);
+    const m = totalMinutes % 60;
+    const h = Math.floor(totalMinutes / 60);
+
+    const pad = (n: number, z = 2) => String(n).padStart(z, '0');
+    if (h > 0) {
+      return `${pad(h)}:${pad(m)}:${pad(s)}.${pad(ms, 3)}`;
+    }
+    return `${pad(m)}:${pad(s)}.${pad(ms, 3)}`;
+  }
+  let cleanedDataByConfig = Object.fromEntries(
+  Object.entries(data.trackTimesByConfig).map(([config, entries]) => [
+      config,
+      entries.map((entry) => ({
+        ...entry,
+        time: formatTime(entry.time)
+      }))
+    ])
+  );
+  let firstGroup = Object.values(cleanedDataByConfig).find((entries) => entries.length > 0);
+  let headers = firstGroup ? Object.keys(firstGroup[0]) : [];
+
+  // Set select menu
+  const configurations = trackData.configuration;
+  let configuration = configurations[0];
+  console.log(configurations)
+
   // Update page data if redirecting to other page
   $: trackData = trackList[$page.params.slug];
 </script>
@@ -18,8 +54,8 @@
 
 <div id='main'>
   <!-- Initial Screen -->
-  <section 
-    id="page-entrance" 
+  <section
+    id="page-entrance"
     style="background-image: url('/tracks/{$page.params.slug}/splash.jpg')"
   >
     <div id="page-entrance-content">
@@ -49,6 +85,32 @@
     {@html trackData.description}
   </section>
 
+  <section id="results">
+    <div id="config-select">
+      <span>Configuration</span>
+      <SimpleSelect className='s-select' name="configurations" options={configurations} bind:value={configuration} />
+    </div>
+    <table>
+      {#if cleanedDataByConfig[configuration] && cleanedDataByConfig[configuration].length > 0}
+        <thead>
+          <tr>
+          {#each headers as header}
+            <th>{header.toUpperCase()}</th>
+          {/each}
+          </tr>
+        </thead>
+        <tbody>
+          {#each cleanedDataByConfig[configuration] as tableEntry}
+            <Modal classContent='modal-content' >
+              <TableRow rowData={tableEntry} />
+            </Modal>
+          {/each}
+        </tbody>
+      {:else}
+      <thead><tr><th style="text-align: center;">NO DATA AVAILABLE</th></tr></thead>
+      {/if}
+    </table>
+  </section>
 
 </div>
 
@@ -158,6 +220,67 @@
     margin: 2rem auto 0;
     border-radius: 10px;
     display: flex;
+  }
+
+  /* Results */
+  #config-select {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  #config-select span {
+    margin: 1rem;
+  }
+  :global(.s-select) {
+    font-size: 1.05rem;
+    padding: 0.5rem;
+    margin: 0.5rem;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    border: 1px solid var(--border);
+    background-color: var(--primary);
+    color: var(--font-color);
+    transition: 0.3s;
+  }
+  #results {
+    width: var(--central-width);
+    margin: 2rem auto;
+    border: 1px solid var(--border);
+    border-radius: 5px;
+    background-color: var(--secondary);
+    overflow-x: auto;
+  }
+  :global(table) {
+    border-collapse: collapse;
+    font-size: 1rem;
+    width: 100%;
+  }
+  :global(table thead tr) {
+    background-color: var(--primary);
+    color: rgb(101, 93, 98);
+    font-weight: bold;
+    font-size: 0.7rem;
+    text-align: left;
+  }
+  :global(table th),
+  :global(table td) {
+    padding: 0.4rem;
+  }
+  :global(table tbody tr) {
+    border-bottom: 1px solid var(--border);
+  }
+  :global(table tbody tr:hover) {
+    cursor: pointer;
+    background-color: var(--primary);
+  }
+
+  /* Modal */
+  :global(.modal-content) {
+    background-color: var(--secondary);
+    border-radius: 5px;
+    border: var(--border);
+    overflow-x: hidden !important;
   }
 
   /* Mobile Styling */

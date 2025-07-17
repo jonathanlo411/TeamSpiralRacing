@@ -23,6 +23,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=arrow_forward" />
 </svelte:head>
 
+<div id="container-resize">
 <a class='car-card' href="/cars/{linkRef}">
   <div class='content'>
     <h1>{carData.name}<p>{currentTag}</p></h1>
@@ -49,8 +50,14 @@
     <img src="/cars/{linkRef}/{currentTag}/outline.png" alt="outline of car" />
   </div>
 </a>
+</div>
 
 <style>
+  #container-resize {
+    container-type: inline-size;
+    container-name: modal;
+  }
+
   .car-card, .car-card:visited {
     background: radial-gradient(
       circle,
@@ -187,6 +194,36 @@
       margin-left: 0rem;
     }
     
+    .controls {
+      flex-direction: row;
+    }
+    .up-button { transform: rotate(180deg); }
+    .down-button { transform: rotate(0deg); }
+  }
+
+  @container modal (max-width: 60vw) {
+    .car-card, .car-card:visited {
+      padding: 1rem;
+      margin: 0.5rem 1rem;
+    }
+
+    .car-card .content {
+      height: 300px;
+    }
+    .content h1 {
+      font-size: 3rem;
+      top: 5rem;
+      left: 1.25rem;
+      display: block;
+    }
+    .content h1 p {
+      display: block;
+      margin-left: 0rem;
+    }
+
+    .content img {
+      padding: 8rem 0 2rem;
+    }
     .controls {
       flex-direction: row;
     }
