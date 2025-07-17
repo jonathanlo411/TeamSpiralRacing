@@ -36,6 +36,7 @@
         </span>
         <span>
           <h5>Location</h5>
+          <spacer></spacer>
           <h6><a href="https://www.google.com/maps/@{trackData.location.replaceAll('°', '').replaceAll(' ' , '')},17z" target="_blank">{trackData.location}</a></h6>
         </span>
 
@@ -89,7 +90,7 @@
   #page-entrance-content h1 {
     font-size: calc(8 * var(--font-size));
     font-weight: 900;
-    width: 30%;
+    width: 35%;
   }
 
   #info-sec {
@@ -100,14 +101,16 @@
     display: flex;
     flex-direction: column;
     height: fit-content;
-    width: 25%;
   }
   #info-sec span {
-    padding: 1.5rem 0;
+    padding: var(--font-size) 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
     border-top: 1px solid white;
+  }
+  spacer {
+    padding: 0 2rem;
   }
   #info-sec span:first-child {
     border-top: none;
@@ -120,22 +123,27 @@
     font-size: calc(1.5 * var(--font-size));
     font-weight: 400;
     border-radius: 5px;
-    transition: 0.2s;
+    padding: calc(0.75 * var(--font-size)) calc(0.25 * var(--font-size));
+    white-space: nowrap;
   }
-  #info-sec span h6:hover {
-    background-color: rgb(131, 131, 131);
-  }
+  h6:last-of-type { padding: 0; }
   #info-sec span h6 a {
     color: white;
     text-decoration: none;
+    padding: calc(0.75 * var(--font-size)) calc(0.25 * var(--font-size));
+    transition: 0.2s;
+  }
+  #info-sec span h6 a:hover {
+    background-color: rgb(131, 131, 131);
+    border-radius: 5px;
   }
 
-  /* Driver Description */
+  /* Track Description */
   #description {
     width: var(--central-width);
     margin: 5vh auto;
     font-size: calc(1.5 * var(--font-size));
-    line-height: 2rem;
+    line-height: calc(2 * var(--font-size));
   }
   section h2 {
     font-size: calc(2.5 * var(--font-size));
@@ -152,11 +160,6 @@
     display: flex;
   }
 
-  /* Cars */
-  #cars {
-    width: var(--central-width);
-    margin: 5vh auto;
-  }
   /* Mobile Styling */
   @media screen and (max-width: 1080px) {
     #page-entrance #page-entrance-content {

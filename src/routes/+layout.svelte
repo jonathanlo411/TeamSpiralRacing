@@ -419,7 +419,8 @@
 
   @media screen and (min-width: 1080px) and (max-width: 1920px) {
     :global(body) {
-      --font-size: 0.8rem
+      --font-size: 0.8rem;
+      --central-width: 80%;
     }
   }
 
