@@ -205,5 +205,34 @@
   .radio-group label span {
     display: flex;
   }
+
+    .error {
+    color: #f85149;
+    margin-bottom: 1rem;
+  }
+  
+  #not-allowed {
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    justify-content: space-around;
+    padding: 1.5rem;
+    background-color: rgba(255, 137, 131, 0.15);
+    border: 1px solid red;
+    border-radius: 10px;
+    margin: 3rem 0 1.5rem;
+    color: red;
+    width: 100%;
+    --font-size: 1.25rem;
+    font-size: var(--font-size);
+  }
+  #not-allowed > div {
+    display: flex;
+    align-items: center;
+  }
+  #not-allowed span {
+    font-size: calc(var(--font-size) * 1.5);
+    padding-right: 0.5rem;
+  }
   
 </style>

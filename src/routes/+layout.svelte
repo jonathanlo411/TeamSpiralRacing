@@ -112,7 +112,7 @@
           <a href="/times" class="mobile-nav-item" on:click={handleNavClick}>Times</a>
           {#if user}
             <a href="/paddock" class="mobile-nav-item" on:click={handleNavClick}>Paddock</a>
-            <a href="/paddock/profile" class="mobile-nav-item" on:click={handleNavClick}>Profile</a>
+            <!-- <a href="/paddock/profile" class="mobile-nav-item" on:click={handleNavClick}>Profile</a> -->
             <a href="/paddock/events" class="mobile-nav-item" on:click={handleNavClick}>Events</a>
             <a href="/paddock/blog" class="mobile-nav-item" on:click={handleNavClick}>Blog</a>
             <a href="/paddock/gallery" class="mobile-nav-item" on:click={handleNavClick}>Gallery</a>
@@ -130,7 +130,7 @@
             {#if menuOpen}
               <div class="popup-menu">
                 <a href="/paddock" class="menu-item" on:click={handleNavClick}>Paddock</a>
-                <a href="/paddock/profile" class="menu-item" on:click={handleNavClick}>Profile</a>
+                <!-- <a href="/paddock/profile" class="menu-item" on:click={handleNavClick}>Profile</a> -->
                 <a href="/paddock/events" class="menu-item" on:click={handleNavClick}>Events</a>
                 <a href="/paddock/blog" class="menu-item" on:click={handleNavClick}>Blog</a>
                 <a href="/paddock/gallery" class="menu-item" on:click={handleNavClick}>Gallery</a>
