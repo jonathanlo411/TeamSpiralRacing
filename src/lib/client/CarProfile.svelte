@@ -201,7 +201,7 @@
     .down-button { transform: rotate(0deg); }
   }
 
-  @container modal (max-width: 60vw) {
+  @container modal (max-width: 700px) {
     .car-card, .car-card:visited {
       padding: 1rem;
       margin: 0.5rem 1rem;
