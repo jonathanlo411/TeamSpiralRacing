@@ -105,7 +105,7 @@
     <div class="gallery">
       {#if data.user.role !== 'USER'}
       <label for="file-upload" class="upload-icon">
-        <input 
+        <input
           id="file-upload"
           type="file"
           accept="image/*"
@@ -116,13 +116,13 @@
       </label>
       {/if}
       {#each data.files as file}
-        <div 
-          class="image-item" 
-          role="button" 
-          tabindex="0" 
-          aria-label="Open Image Modal" 
+        <div
+          class="image-item"
+          role="button"
+          tabindex="0"
+          aria-label="Open Image Modal"
           style="background-image: url('{file.url}')"
-          on:click={() => openModal(file)} 
+          on:click={() => openModal(file)}
           on:keydown={(event) => event.key === 'Enter' || event.key === ' ' ? openModal(file) : null}>
         </div>
       {/each}
@@ -209,8 +209,8 @@
     background-size: cover;
     border-radius: 15px;
     transition: 0.3s;
-    height: 100%;
-    width: 100%;    
+    height: 150px;
+    width: 100%;
   }
   .image-item:hover {
     cursor: pointer;
