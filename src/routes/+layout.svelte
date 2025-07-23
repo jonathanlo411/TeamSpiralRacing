@@ -59,6 +59,8 @@
   function handleNavClick() {
     if (isMobile) {
       mobileMenuOpen = false;
+    } else {
+      menuOpen = false;
     }
   }
 
