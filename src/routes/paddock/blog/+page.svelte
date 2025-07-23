@@ -17,7 +17,7 @@
     imageRef: '',
     content: ''
   };
-  
+
   let status = {
     loading: false,
     message: '',
@@ -43,7 +43,7 @@
 
     status.loading = true;
     status.message = '';
-    
+
     try {
       const res = await fetch('/api/blog', {
         method: 'POST',
@@ -52,9 +52,9 @@
           'Content-Type': 'application/json'
         }
       });
-      
+
       const data = await res.json();
-      
+
       if (!res.ok) {
         status.type = 'error';
         status.message = data.error || 'Failed to create post';
@@ -65,7 +65,7 @@
       status.type = 'success';
       status.message = 'Post created successfully!';
       await invalidate('posts');
-      
+
     } catch (err) {
       status.type = 'error';
       status.message = 'Failed to create post';
@@ -99,7 +99,7 @@
   {:else}
     <section>
       <h2>Create New Post</h2>
-      
+
       {#if status.message}
         <div class="alert {status.type}">
           {status.message}
