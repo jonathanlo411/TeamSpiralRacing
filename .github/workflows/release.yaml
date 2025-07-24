@@ -1,52 +1,123 @@
 name: Build Docker Image and Publish Release
-
 on:
   push:
     tags:
       - 'v*.*.*'
-
 jobs:
   build_and_release:
     runs-on: ubuntu-latest
-
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
-
+      with:
+        fetch-depth: 0  # Fetch all history for proper tag comparison
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v2
-
     - name: Log in to GitHub Container Registry
       uses: docker/login-action@v2
       with:
         registry: ghcr.io
         username: ${{ github.actor }}
         password: ${{ secrets.GHCR_TOKEN }}
-
     - name: Build Docker image
       run: |
         REPO_NAME=${{ github.repository }}
         LOWERCASE_REPO_NAME=$(echo "$REPO_NAME" | tr '[:upper:]' '[:lower:]')
         docker build -t ghcr.io/${{ github.actor }}/$LOWERCASE_REPO_NAME:${{ github.ref_name }} .
-
     - name: Push Docker image to GitHub Container Registry
       run: |
         REPO_NAME=${{ github.repository }}
         LOWERCASE_REPO_NAME=$(echo "$REPO_NAME" | tr '[:upper:]' '[:lower:]')
         docker push ghcr.io/${{ github.actor }}/$LOWERCASE_REPO_NAME:${{ github.ref_name }}
-
     - name: Generate release notes
       id: generate_release_notes
       run: |
-        release_notes=$(git log $(git describe --tags --abbrev=0)..HEAD --pretty=format:"* %s (%an)" | sed 's/\\n/\\n\\n/g')
-        echo "RELEASE_NOTES<<EOF" >> $GITHUB_ENV
-        echo "$release_notes" >> $GITHUB_ENV
-        echo "EOF" >> $GITHUB_ENV
-
+        # Get the previous tag (skip the current tag)
+        PREVIOUS_TAG=$(git tag --sort=-version:refname | grep -v "^${{ github.ref_name }}$" | head -n 1)
+        
+        if [ -z "$PREVIOUS_TAG" ]; then
+          # If no previous tag exists, get all commits
+          COMMIT_RANGE="HEAD"
+          echo "No previous tag found, getting all commits"
+        else
+          # Get commits between previous tag and current tag
+          COMMIT_RANGE="$PREVIOUS_TAG..${{ github.ref_name }}"
+          echo "Getting commits from $PREVIOUS_TAG to ${{ github.ref_name }}"
+        fi
+        
+        # Get all commit messages with their types
+        COMMITS=$(git log $COMMIT_RANGE --pretty=format:"%s|||%an" --reverse)
+        
+        # Initialize release notes
+        RELEASE_NOTES="## What's Changed"$'\n\n'
+        
+        # Arrays to store different types of commits
+        FEATURES=""
+        FIXES=""
+        DOCS=""
+        CHORES=""
+        OTHERS=""
+        
+        # Process each commit
+        while IFS='|||' read -r message author; do
+          if [[ -n "$message" ]]; then
+            # Extract commit type and description
+            if [[ $message =~ ^feat(\(.+\))?!?:(.*)$ ]]; then
+              FEATURES="${FEATURES}* ${BASH_REMATCH[2]# } (@${author})"$'\n'
+            elif [[ $message =~ ^fix(\(.+\))?!?:(.*)$ ]]; then
+              FIXES="${FIXES}* ${BASH_REMATCH[2]# } (@${author})"$'\n'
+            elif [[ $message =~ ^docs(\(.+\))?!?:(.*)$ ]]; then
+              DOCS="${DOCS}* ${BASH_REMATCH[2]# } (@${author})"$'\n'
+            elif [[ $message =~ ^chore(\(.+\))?!?:(.*)$ ]]; then
+              CHORES="${CHORES}* ${BASH_REMATCH[2]# } (@${author})"$'\n'
+            elif [[ $message =~ ^(style|refactor|perf|test|build|ci)(\(.+\))?!?:(.*)$ ]]; then
+              OTHERS="${OTHERS}* ${BASH_REMATCH[3]# } (@${author})"$'\n'
+            else
+              # Non-semantic commits go to "Other Changes"
+              OTHERS="${OTHERS}* ${message} (@${author})"$'\n'
+            fi
+          fi
+        done <<< "$COMMITS"
+        
+        # Build release notes sections
+        if [[ -n "$FEATURES" ]]; then
+          RELEASE_NOTES="${RELEASE_NOTES}### 🚀 Features"$'\n'"${FEATURES}"$'\n'
+        fi
+        
+        if [[ -n "$FIXES" ]]; then
+          RELEASE_NOTES="${RELEASE_NOTES}### 🐛 Bug Fixes"$'\n'"${FIXES}"$'\n'
+        fi
+        
+        if [[ -n "$DOCS" ]]; then
+          RELEASE_NOTES="${RELEASE_NOTES}### 📚 Documentation"$'\n'"${DOCS}"$'\n'
+        fi
+        
+        if [[ -n "$CHORES" ]]; then
+          RELEASE_NOTES="${RELEASE_NOTES}### 🧹 Chores"$'\n'"${CHORES}"$'\n'
+        fi
+        
+        if [[ -n "$OTHERS" ]]; then
+          RELEASE_NOTES="${RELEASE_NOTES}### 🔧 Other Changes"$'\n'"${OTHERS}"$'\n'
+        fi
+        
+        # If no commits found, add a default message
+        if [[ "$RELEASE_NOTES" == "## What's Changed"$'\n\n' ]]; then
+          RELEASE_NOTES="${RELEASE_NOTES}No changes found in this release."$'\n'
+        fi
+        
+        # Set the release notes as an environment variable
+        {
+          echo "RELEASE_NOTES<<EOF"
+          echo "$RELEASE_NOTES"
+          echo "EOF"
+        } >> $GITHUB_ENV
+        
+        # Debug output
+        echo "Generated release notes:"
+        echo "$RELEASE_NOTES"
     - name: Create .tar.gz archive of repository files
       run: |
         git archive --format=tar.gz --prefix=TeamSpiralRacing/ -o release-${{ github.ref_name }}.tar.gz HEAD
-
     - name: Upload .tar.gz archive as a GitHub Release asset
       id: release
       uses: softprops/action-gh-release@v1
@@ -57,7 +128,6 @@ jobs:
         files: release-${{ github.ref_name }}.tar.gz
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
     - name: Output Release URL
       run: |
         echo "Release URL: ${{ steps.release.outputs.html_url }}"
