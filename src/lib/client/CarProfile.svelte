@@ -1,5 +1,6 @@
 <script lang='ts'>
   export let linkRef: string;
+  export let isModal: boolean = false; // Add this prop to indicate modal context
   import cars from '$lib/cars.json'
 
   const carsData = cars as Cars;
@@ -23,7 +24,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=arrow_forward" />
 </svelte:head>
 
-<div id="container-resize">
+<div id="container-resize" class:modal-context={isModal}>
 <a class='car-card' href="/cars/{linkRef}">
   <div class='content'>
     <h1>{carData.name}<p>{currentTag}</p></h1>
@@ -174,61 +175,86 @@
     }
   }
 
-  /* Mobile Styling */
+  /* Modal-specific styling - only applies when modal-context class is present */
+  .modal-context .car-card,
+  .modal-context .car-card:visited {
+    padding: 1rem;
+    margin: 0.5rem 1rem;
+  }
+
+  .modal-context .car-card .content {
+    height: 300px;
+  }
+  
+  .modal-context .content h1 {
+    font-size: 3rem;
+    top: 5rem;
+    left: 1.25rem;
+    display: block;
+  }
+  
+  .modal-context .content h1 p {
+    display: block;
+    margin-left: 0rem;
+  }
+
+  .modal-context .content img {
+    padding: 8rem 0 2rem;
+  }
+  
+  .modal-context .controls {
+    flex-direction: row;
+  }
+  
+  .modal-context .up-button { 
+    transform: rotate(180deg); 
+  }
+  
+  .modal-context .down-button { 
+    transform: rotate(0deg); 
+  }
+
+  /* Mobile Styling - This will override modal styles on mobile */
   @media screen and (max-width: 1080px) {
-    .car-card, .car-card:visited {
+    .car-card, 
+    .car-card:visited,
+    .modal-context .car-card,
+    .modal-context .car-card:visited {
       padding: 1rem;
     }
     
-    .car-card .content {
+    .car-card .content,
+    .modal-context .car-card .content {
       height: 300px;
     }
-    .content h1 {
+    
+    .content h1,
+    .modal-context .content h1 {
       font-size: 3rem;
       top: 5rem;
       left: 1.25rem;
       display: block;
     }
-    .content h1 p {
+    
+    .content h1 p,
+    .modal-context .content h1 p {
       display: block;
       margin-left: 0rem;
     }
     
-    .controls {
+    .controls,
+    .modal-context .controls {
       flex-direction: row;
     }
-    .up-button { transform: rotate(180deg); }
-    .down-button { transform: rotate(0deg); }
+    
+    .up-button,
+    .modal-context .up-button { 
+      transform: rotate(180deg); 
+    }
+    
+    .down-button,
+    .modal-context .down-button { 
+      transform: rotate(0deg); 
+    }
   }
-
-  @container modal (max-width: 700px) {
-    .car-card, .car-card:visited {
-      padding: 1rem;
-      margin: 0.5rem 1rem;
-    }
-
-    .car-card .content {
-      height: 300px;
-    }
-    .content h1 {
-      font-size: 3rem;
-      top: 5rem;
-      left: 1.25rem;
-      display: block;
-    }
-    .content h1 p {
-      display: block;
-      margin-left: 0rem;
-    }
-
-    .content img {
-      padding: 8rem 0 2rem;
-    }
-    .controls {
-      flex-direction: row;
-    }
-    .up-button { transform: rotate(180deg); }
-    .down-button { transform: rotate(0deg); }
-  }
-
 </style>

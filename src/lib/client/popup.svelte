@@ -29,11 +29,11 @@
   </table>
 
   <div id="video-proof">
-    <iframe src="https://www.youtube.com/embed/{youtubeRef}"></iframe>
+    <iframe src="https://www.youtube.com/embed/{youtubeRef}" title="youtube video"></iframe>
   </div>
 
   <h2>Metadata</h2>
-  <CarProfile linkRef={rowData.car} />
+  <CarProfile linkRef={rowData.car} isModal={true} />
 </div>
 
 
