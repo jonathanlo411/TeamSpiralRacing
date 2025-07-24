@@ -11,6 +11,101 @@
     { id: 3, src: "/carousel-3.jpg", width: 1200, height: 800 },
   ];
 
+  // Blog Posts
+  interface BlogPost {
+    id: string;
+    title: string;
+    imageRef: string;
+    content: string;
+    createdAt: string;
+    author: {
+      id: string;
+      firstName: string;
+      lastName: string;
+      email: string;
+    };
+  }
+
+  let blogPosts: BlogPost[] = [];
+  let blogLoading = true;
+
+  // Function to calculate read time based on word count
+  // Average reading speed is 200-250 words per minute, using 225 as middle ground
+  function calculateReadTime(content: string): string {
+    const wordsPerMinute = 225;
+    const wordCount = content.trim().split(/\s+/).length;
+    const readTimeMinutes = Math.ceil(wordCount / wordsPerMinute);
+    return `${readTimeMinutes} Minute Read`;
+  }
+
+  // Function to format date to match your current template
+  function formatBlogDate(dateString: string): string {
+    const date = new Date(dateString);
+    const options: Intl.DateTimeFormatOptions = {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    };
+    return date.toLocaleDateString('en-US', options);
+  }
+
+  // Function to create blog post URL slug
+  function createBlogUrl(postId: string): string {
+    return `https://blog.teamspiralracing.com/posts/${postId}`;
+  }
+
+  async function fetchBlogPosts() {
+    try {
+      blogLoading = true;
+      const response = await fetch('/api/blog?limit=4');
+      
+      if (!response.ok) {
+        throw new Error('Failed to fetch blog posts');
+      }
+      
+      const data = await response.json();
+      blogPosts = data.posts;
+    } catch (error) {
+      console.error('Error fetching blog posts:', error);
+      // Keep empty array on error so fallback stories can be shown
+      blogPosts = [];
+    } finally {
+      blogLoading = false;
+    }
+  }
+
+  // Fallback stories in case blog fails to load
+  const fallbackStories = [
+    {
+      id: "fallback-1",
+      title: "Exploring Newcomb's Ranch",
+      imageRef: "/story-placeholder-1.jpg",
+      createdAt: "2024-12-15",
+      content: "A detailed exploration of one of Southern California's most iconic driving destinations, featuring winding roads and breathtaking views."
+    },
+    {
+      id: "fallback-2", 
+      title: "Rating Ohlins",
+      imageRef: "/story-placeholder-2.jpg",
+      createdAt: "2024-09-03",
+      content: "An in-depth review and analysis of Ohlins suspension components, covering performance, installation, and real-world testing across various driving conditions and track environments."
+    },
+    {
+      id: "fallback-3",
+      title: "SoW Track Day Lunch",
+      imageRef: "/story-placeholder-3.jpg", 
+      createdAt: "2024-07-15",
+      content: "Behind the scenes coverage of our Speed of Wednesday track day event, featuring member interviews, lap times, and the camaraderie that makes our community special during lunch breaks."
+    },
+    {
+      id: "fallback-4",
+      title: "Picking our newest member's 06' S2000",
+      imageRef: "/story-placeholder-4.jpg",
+      createdAt: "2024-03-29", 
+      content: "The complete journey of helping our newest team member select and purchase their dream 2006 Honda S2000, including inspection tips, negotiation strategies, and the emotional moment of keys changing hands in this comprehensive guide to buying a used sports car."
+    }
+  ];
+
   // Google Maps
   let map: any;
   let googleMapsLoaded = false;
@@ -76,6 +171,7 @@
 
   onMount(() => {
     initializeMap();
+    fetchBlogPosts();
 
     return () => {
       if (map) {
@@ -84,6 +180,9 @@
       }
     };
   });
+
+  // Get stories to display (blog posts if available, otherwise fallback)
+  $: storiesToDisplay = blogPosts.length > 0 ? blogPosts : fallbackStories;
 </script>
 
 <svelte:head>
@@ -179,45 +278,37 @@
 
   <section id='stories'>
     <h2>Our Stories</h2>
-    <div id="story-grid">
-
-      <a href="/" class="story story-1">
-        <div class='picture' style="background-image: url('/story-placeholder-1.jpg')"></div>
-        <div class="story-info">
-          <h3>Exploring Newcomb's Ranch</h3>
-          <p>December 15th, 2024 | 3 Minute Read</p>
-        </div>
+    
+    {#if blogLoading}
+      <div class="loading-container">
+        <div class="spinner"></div>
+        <p>Loading latest stories...</p>
+      </div>
+    {:else}
+      <div id="story-grid">
+        {#each storiesToDisplay.slice(0, 4) as story, index}
+          <a 
+            href={blogPosts.length > 0 ? createBlogUrl(story.id) : "/"} 
+            class="story story-{index + 1}"
+            target={blogPosts.length > 0 ? "_blank" : "_self"}
+            rel={blogPosts.length > 0 ? "noopener noreferrer" : ""}
+          >
+            <div class='picture' style="background-image: url('{story.imageRef}')"></div>
+            <div class="story-info">
+              <h3>{story.title}</h3>
+              <p>{formatBlogDate(story.createdAt)} | {calculateReadTime(story.content)}</p>
+            </div>
+          </a>
+        {/each}
+      </div>
+    {/if}
+    
+    <div class='centering'>
+      <a href='https://blog.teamspiralracing.com/' target="_blank" rel="noreferrer">
+        <button class="read-more">Read More →</button>
       </a>
-
-      <a href="/" class="story story-2">
-        <div class='picture' style="background-image: url('/story-placeholder-2.jpg')"></div>
-        <div class="story-info">
-          <h3>Rating Ohlins</h3>
-          <p>September 3rd, 2024 | 10 Minute Read</p>
-        </div>
-      </a>
-      
-      <a href="/" class="story story-3">
-        <div class='picture' style="background-image: url('/story-placeholder-3.jpg')"></div>
-        <div class="story-info">
-          <h3>SoW Track Day Lunch</h3>
-          <p>July 15th, 2024 | 8 Minute Read</p>
-        </div>
-      </a>
-      
-      <a href="/" class="story story-4">
-        <div class='picture' style="background-image: url('/story-placeholder-4.jpg')"></div>
-        <div class="story-info">
-          <h3>Picking our newest member's 06' S2000</h3>
-          <p>March 29th, 2024 | 20 Minute Read</p>
-        </div>
-      </a>
-      
     </div>
-    <div class='centering'><a href='blog'><button class="read-more">Read More →</button></a></div>
   </section>
-  
-
 </div>
 
 <style>
@@ -385,6 +476,35 @@
     margin: 5vh auto;
   }
 
+  /* Loading styles */
+  .loading-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 300px;
+    gap: 1rem;
+  }
+
+  .spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid var(--highlight, #3498db);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  .loading-container p {
+    font-size: calc(1.2 * var(--font-size));
+    color: #666;
+  }
+
   #stories #story-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -402,6 +522,7 @@
     overflow: hidden;
     color: white;
     transition: 0.3s;
+    text-decoration: none;
   }
   .story:hover {
     cursor: pointer;
@@ -568,10 +689,17 @@
       margin: 2rem 0;
     }
 
-
     /* Stories */
     #stories h2 {
       font-size: 2.5rem;
+    }
+
+    .loading-container {
+      height: 200px;
+    }
+
+    .loading-container p {
+      font-size: 1.1rem;
     }
 
     #stories #story-grid {
@@ -611,7 +739,5 @@
     #stories button {
       margin: 2rem auto 4rem;
     }
-
   }
-
 </style>
