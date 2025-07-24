@@ -65,20 +65,46 @@ export async function POST({ request, locals }) {
   }
 }
 
-export async function GET() {
+export async function GET({ url }) {
   try {
+    const page = parseInt(url.searchParams.get('page') || '1');
+    const limit = parseInt(url.searchParams.get('limit') || '50');
+    
     const command = new ListObjectsV2Command({
       Bucket: env.CF_BUCKET_NAME,
     });
-
+    
     const response = await r2Client.send(command);
-
-    const files = response.Contents?.map((item) => ({
+    
+    const allFiles = response.Contents?.map((item) => ({
       key: item.Key,
       url: `${env.CF_R2_PUB_URL}/${item.Key}`,
+      lastModified: item.LastModified, // Add this for sorting
     })) || [];
 
-    return json({ files });
+    // Sort by most recent first (LastModified descending)
+    allFiles.sort((a, b) => {
+      const dateA = new Date(a.lastModified || 0);
+      const dateB = new Date(b.lastModified || 0);
+      return dateB.getTime() - dateA.getTime();
+    });
+
+    // Calculate pagination
+    const totalFiles = allFiles.length;
+    const totalPages = Math.ceil(totalFiles / limit);
+    const startIndex = (page - 1) * limit;
+    const endIndex = startIndex + limit;
+    const paginatedFiles = allFiles.slice(startIndex, endIndex);
+
+    // Remove lastModified from response (frontend doesn't need it)
+    const files = paginatedFiles.map(({ lastModified, ...file }) => file);
+
+    return json({ 
+      files,
+      totalFiles,
+      totalPages,
+      currentPage: page
+    });
   } catch (error) {
     console.error('Failed to fetch objects from R2:', error);
     return json({ error: 'Failed to fetch images' }, { status: 500 });
