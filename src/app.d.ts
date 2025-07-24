@@ -122,6 +122,15 @@ declare global {
 		proof: string,
 	}
 
+  // Google analytics
+
+  function gtag(...args: any[]): void
+  interface Window {
+    gtag: (...args: any[]) => void
+    dataLayer: any[]
+  }
+  var dataLayer: any[]
+
 }
 
 export {};
