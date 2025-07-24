@@ -11,7 +11,7 @@
   <!-- Initial Screen -->
   <section 
     id="page-entrance" 
-    style="background-image: url('/carousel-1.jpg')"
+    style="background-image: url('/cars-splash.jpg')"
   >
     <div id="page-entrance-content">
       <h1>Our Cars</h1>
