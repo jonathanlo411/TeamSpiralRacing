@@ -1,6 +1,8 @@
 <script lang="ts">
   import { onMount } from "svelte";
   import type { PageData } from './$types';
+  import Analytics from "$lib/client/analytics.svelte";
+
   let scrolled = false;
   let menuOpen = false;
   let mobileMenuOpen = false;
@@ -148,6 +150,7 @@
   </nav>
 </div>
 
+<Analytics></Analytics>
 
 <div id="base">
   <slot></slot>
