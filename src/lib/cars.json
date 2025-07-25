@@ -88,6 +88,50 @@
                     "255 Square RE-71RS",
                     "ATE 200 DOT4 Brake Fluid"
                 ]
+            },
+            {
+                "tag": "v3.1",
+                "updateDate": "2025.07.10",
+                "description": "Slid into a tire barrier at new BW Circuit track with primarily body damadge. Decided to upgrade a few of the body pieces while at it.",
+                "power": [
+                    "K&N Air Filter",
+                    "Buddy Club Spec II Exhaust",
+                    "Koyorad Radiator"
+                ],
+                "underbody": [
+                    "SBG Ohlins DFV (14k/12k)",
+                    "SBG FPSpec Sway Bar (Front)",
+                    "SBG FPSpec Sway Bar (Rear)",
+                    "Ballade Sports RCA (Front)",
+                    "Ballade Sports RCA (Rear)",
+                    "StopTech SS Brake Lines",
+                    "EVS Tuning Anti-Bumpsteer Kit (Rear)",
+                    "Porterfield R4 Brake Pads"
+                ],
+                "body": [
+                    "Forbidden USA Mugen Style Hardtop",
+                    "Voltex Front Bumper (Circuit)",
+                    "Voltex Front Bumper Canards",
+                    "Voltex Type 2 1700mm GT Wing",
+                    "CR Trunk Reinforcments",
+                    "EVS Tuning Tow Hook (Voltex)",
+                    "EVS Tuning Vented Fenders",
+                    "EVS Tuning GLTM Mirrors",
+                    "Seibon CFRP Trunk",
+                    "K1 Lab Ducktail Spoiler",
+                    "Renegade Carbon Stands (275mm)",
+                    "Alpharex NOVA-Series Headlights",
+                    "Buddy Club Sequential Taillights"
+                ],
+                "interior": [
+                    "Renegade Extended Shift Knob",
+                    "Retivis RA86 GMRS Radio"
+                ],
+                "misc": [
+                    "17x9.5 + 51 Titan 7 T-R10s",
+                    "255 Square Falken Azenis RT660",
+                    "ATE 200 DOT4 Brake Fluid"
+                ]
             }
         ]
     },
