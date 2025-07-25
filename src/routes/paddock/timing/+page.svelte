@@ -28,7 +28,8 @@
   let isSubmitting = false;
 
   $: configurations = selectedTrack ? trackList[selectedTrack]?.configuration || [] : [];
-  $: tags = car ? userCars[car]?.history.map((entry) => entry.tag) || [] : [];
+  // Updated to get tags from all cars, not just user cars
+  $: tags = car ? carList[car]?.history.map((entry) => entry.tag) || [] : [];
 
   const handleSubmit = async () => {
     validationMessage = '';
@@ -127,8 +128,8 @@
       <div class="form-group">
         <label for="car">Car</label>
         <select id="car" bind:value={car} required>
-          <option value="">Select from your cars</option>
-          {#each Object.entries(userCars) as [ref, carData]}
+          <option value="">Select a car</option>
+          {#each Object.entries(carList) as [ref, carData]}
             <option value={ref}>{carData.name} ({carData.year} {carData.make} {carData.model})</option>
           {/each}
         </select>
