@@ -23,6 +23,14 @@
         "location": "35.497°, -119.554°",
         "configuration": ["Circuit"]
     },
+    "laguna-seca": {
+        "name": "WeatherTech Raceway Laguna Seca",
+        "type": "Race Track",
+        "description": "WeatherTech Raceway Laguna Seca is a legendary 2.238-mile road course on the Monterey Peninsula, famous for its rich racing history dating back to 1957. Its signature feature, the Corkscrew, delivers a dramatic multi-story drop that makes it one of the most iconic and challenging turns in motorsports.",
+        "turns": 11,
+        "location": "36.587°, -121.754°",
+        "configuration": ["Standard"]
+    },
     "palomar-mt-south": {
         "name": "Palomar Mountain South Grade",
         "type": "Road Course",
