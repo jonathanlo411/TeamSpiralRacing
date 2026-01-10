@@ -203,6 +203,29 @@
                     "215/245 Falken Azenis RT660",
                     "Robbins Stayfast Black Softtop"
                 ]
+            },
+            {
+                "tag": "v1.3",
+                "updateDate": "2025.12.10",
+                "description": "Setup car to be more relliable for track days and events. Swapped from Ballade HFC to OEM due to bad welds and then to Berk HFC",
+                "power": [
+                    "K&N Intake",
+                    "Clutch Masters Lightweight Steel Flywheel 13lbs",
+                    "Exedy OEM Clutch Kit and Pressure Plate",
+                    "Berk 63.5mm HFC"
+                ],
+                "underbody": [
+                    "Porterfield R4 Brakepads"
+                ],
+                "body": [],
+                "interior": [
+                    "Renegade Extended Shift Knob"
+                ],
+                "misc": [
+                    "AP2v1 Wheels",
+                    "215/245 Falken Azenis RT660",
+                    "Robbins Stayfast Black Softtop"
+                ]
             }
         ]
     }
