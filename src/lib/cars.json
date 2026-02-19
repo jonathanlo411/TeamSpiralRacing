@@ -138,6 +138,58 @@
                     "255 Square Falken Azenis RT660",
                     "ATE 200 DOT4 Brake Fluid"
                 ]
+            },
+            {
+                "tag": "v3.2",
+                "updateDate": "2026.2.23",
+                "description": "Aero touches, awaiting stuff before new wrap.",
+                "power": [
+                    "K&N Air Filter",
+                    "Buddy Club Spec II Exhaust",
+                    "Koyorad Radiator"
+                ],
+                "underbody": [
+                    "SBG Ohlins DFV (14k/12k)",
+                    "SBG FPSpec Sway Bar (Front)",
+                    "SBG FPSpec Sway Bar (Rear)",
+                    "Ballade Sports RCA (Front)",
+                    "Ballade Sports RCA (Rear)",
+                    "StopTech SS Brake Lines",
+                    "EVS Tuning Anti-Bumpsteer Kit (Rear)",
+                    "Porterfield R4 Brake Pads",
+                    "Innovative 75a Diff Mounts"
+                ],
+                "body": [
+                    "Forbidden USA Mugen Style Hardtop",
+                    "Voltex Front Bumper (Circuit)",
+                    "Voltex Front Bumper Canards",
+                    "Voltex Type 2 1700mm GT Wing",
+                    "Voltex Rear Diffuser",
+                    "CR Trunk Reinforcments",
+                    "EVS Tuning Tow Hook (Voltex)",
+                    "EVS Tuning Vented Fenders",
+                    "EVS Tuning GLTM Mirrors",
+                    "Seibon CFRP Trunk",
+                    "Seibon CFRP MG Style Hood",
+                    "K1 Lab Ducktail Spoiler",
+                    "Renegade Carbon Stands (275mm)",
+                    "Alpharex NOVA-Series Headlights",
+                    "Buddy Club Sequential Taillights"
+                ],
+                "interior": [
+                    "Renegade Extended Shift Knob",
+                    "Retivis RA86 GMRS Radio",
+                    "Bride Zieg IV Wide (Driver)",
+                    "PCI Slider Rails (Driver)",
+                    "NRG Short Hub",
+                    "NRG Quck Release",
+                    "Momo MOD. 78 Steering Wheel"
+                ],
+                "misc": [
+                    "17x9.5 + 51 Titan 7 T-R10s",
+                    "255 Square Falken Azenis RT660",
+                    "ATE 200 DOT4 Brake Fluid"
+                ]
             }
         ]
     },
