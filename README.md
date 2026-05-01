@@ -20,4 +20,4 @@ npm run dev -- --host
 ```
 
 ## License
-This project is licensed under the GNU General Public License. See `LICENSE` for more information.
+This project is licensed under the MIT License. See `LICENSE` for more information.
