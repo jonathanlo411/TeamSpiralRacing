@@ -1,5 +1,6 @@
 <script lang='ts'>
   import CarProfile from "./CarProfile.svelte";
+  import cars from "../cars.json";
   export let rowData: any;
   const excludedKeys = ["proof"]
   
@@ -71,8 +72,10 @@
   <div id="video-proof">
     <iframe src="{embedUrl}" title="youtube video"></iframe>
   </div>
-  <h2>Metadata</h2>
-  <CarProfile linkRef={rowData.car} isModal={true} />
+  {#if Object.keys(cars).includes(rowData.car)}
+    <h2>Metadata</h2>
+    <CarProfile linkRef={rowData.car} isModal={true} />
+  {/if}
 </div>
 
 <style>
