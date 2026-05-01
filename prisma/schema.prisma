@@ -74,4 +74,5 @@ model Event {
   updatedAt   DateTime @updatedAt
   createdBy   User     @relation(fields: [createdById], references: [id])
   createdById String   @db.ObjectId
+  gcalEventId String?
 }

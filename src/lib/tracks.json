@@ -38,5 +38,13 @@
         "turns": 67,
         "location": "33.256°, -116.760°",
         "configuration": ["Downhill", "Uphill"]
+    },
+    "hakone-turnpike": {
+        "name": "Hakone Turnpike",
+        "type": "Road Course",
+        "description": "The Hakone Turnpike is a a famous, privately owned 15.8km toll road in Kanagawa Prefecture, Japan, popular among car enthusiasts for its scenic, high-speed, and challenging mountain driving",
+        "turns": 32,
+        "location": "35.242°, 139.140°",
+        "configuration": ["Uphill", "Downhill"]
     }
 }
