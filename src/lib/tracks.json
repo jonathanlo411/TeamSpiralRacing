@@ -13,7 +13,7 @@
         "description": "Buttonwillow Raceway Park is one of the premiere road racing and testing facilities in The United States.",
         "turns": 21,
         "location": "35.489°, -119.544°",
-        "configuration": ["13CW"]
+        "configuration": ["CW13"]
     },
     "buttonwillow-circuit": {
         "name": "Buttonwillow - Circuit",
